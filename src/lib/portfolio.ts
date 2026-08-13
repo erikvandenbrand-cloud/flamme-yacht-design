@@ -30,7 +30,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '7.60m',
     year: '2025',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/4192207021.jpeg',
+    image: '/images/projects/eagle-25-deck.jpg',
     featured: true,
     published: true,
     yard: 'Eagle Yachts',
@@ -46,7 +46,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '6.8m',
     year: '2020',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/107137140.jpeg',
+    image: '/images/projects/cooper-680.jpg',
     featured: true,
     published: true,
     yard: 'Cooperyacht',
@@ -60,7 +60,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '12m',
     year: '2019',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/1823381250.jpeg',
+    image: '/images/projects/flamboyant.jpg',
     featured: true,
     published: true,
   },
@@ -73,7 +73,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '14m',
     year: '2019',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/33237816.jpeg',
+    image: '/images/projects/versafish-1400.jpg',
     featured: false,
     published: true,
   },
@@ -86,7 +86,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '6.8m',
     year: '2018',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/4156790115.jpeg',
+    image: '/images/projects/e680.jpg',
     featured: false,
     published: true,
   },
@@ -99,7 +99,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '18m',
     year: '2017',
     role: 'naval',
-    image: 'https://ext.same-assets.com/1702387495/3464338125.jpeg',
+    image: '/images/projects/frisia-iv.jpg',
     featured: false,
     published: true,
   },
@@ -112,7 +112,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '5.5m',
     year: '2019',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/2686849500.jpeg',
+    image: '/images/projects/slim-550.jpg',
     featured: false,
     published: true,
   },
@@ -125,7 +125,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '7m',
     year: '2019',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/3558028514.jpeg',
+    image: '/images/projects/lxry-700.jpg',
     featured: false,
     published: true,
   },
@@ -138,7 +138,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '5.8m',
     year: '2018',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/1539500599.jpeg',
+    image: '/images/projects/xplore-580.jpg',
     featured: false,
     published: true,
   },
@@ -151,10 +151,22 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '9m',
     year: '2017',
     role: 'complete',
-    image: 'https://ext.same-assets.com/1702387495/1393168891.jpeg',
+    image: '/images/projects/venandi-900.jpg',
     featured: false,
     published: true,
   },
+  // ------------------------------------------------------------------
+  // NIET GEPUBLICEERD - herkomst onbevestigd
+  //
+  // Deze vier komen niet voor op flamme-yachtdesign.com, terwijl elk ander
+  // project hier wel een tegenhanger heeft op die site, met foto en al. De
+  // namen zijn bovendien opvallend generiek. Het vermoeden is dat same.new
+  // ze heeft verzonnen om het portfolio te vullen.
+  //
+  // Ze staan daarom op published: false in plaats van dat ze verwijderd zijn.
+  // Bevestigt Herbert dat het echte opdrachten waren, dan gaat de vlag om en
+  // is er alleen nog een foto nodig. Zo niet, dan kunnen ze weg.
+  // ------------------------------------------------------------------
   {
     id: 'patrol-1500',
     title: 'Patrol 1500',
@@ -166,7 +178,7 @@ export const portfolioItems: PortfolioItem[] = [
     role: 'complete',
     image: 'https://ext.same-assets.com/1702387495/1167109098.jpeg',
     featured: false,
-    published: true,
+    published: false,
   },
   {
     id: 'classic-launch-650',
@@ -179,7 +191,7 @@ export const portfolioItems: PortfolioItem[] = [
     role: 'complete',
     image: 'https://ext.same-assets.com/1702387495/365169060.jpeg',
     featured: false,
-    published: true,
+    published: false,
   },
   {
     id: 'survey-vessel-12',
@@ -192,7 +204,7 @@ export const portfolioItems: PortfolioItem[] = [
     role: 'naval',
     image: 'https://ext.same-assets.com/1702387495/3300859654.jpeg',
     featured: false,
-    published: true,
+    published: false,
   },
   {
     id: 'dayboat-850',
@@ -205,7 +217,7 @@ export const portfolioItems: PortfolioItem[] = [
     role: 'complete',
     image: 'https://ext.same-assets.com/1702387495/445813618.jpeg',
     featured: false,
-    published: true,
+    published: false,
   },
 
   // CONCEPTS
@@ -218,7 +230,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '30m',
     year: '2020',
     role: 'design',
-    image: 'https://ext.same-assets.com/1702387495/2381854316.jpeg',
+    image: '/images/projects/orizzonte-ii.jpg',
     featured: true,
     published: true,
   },
@@ -231,7 +243,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '7.5m',
     year: '2020',
     role: 'design',
-    image: 'https://ext.same-assets.com/1702387495/3289741533.jpeg',
+    image: '/images/projects/timeless-25.jpg',
     featured: true,
     published: true,
   },
@@ -244,7 +256,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '15m',
     year: '2018',
     role: 'design',
-    image: 'https://ext.same-assets.com/1702387495/3938878689.jpeg',
+    image: '/images/projects/hanse-495.jpg',
     featured: false,
     published: true,
   },
@@ -257,7 +269,7 @@ export const portfolioItems: PortfolioItem[] = [
     lengthRange: '12m',
     year: '2018',
     role: 'design',
-    image: 'https://ext.same-assets.com/1702387495/606108781.jpeg',
+    image: '/images/projects/mtb40-breedendam.jpg',
     featured: false,
     published: true,
   },

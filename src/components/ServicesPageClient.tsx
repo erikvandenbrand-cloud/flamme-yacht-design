@@ -31,9 +31,9 @@ interface ServicesPageClientProps {
 
 // One image per discipline, in the same order as the translations array.
 const disciplineImages = [
-  'https://ext.same-assets.com/1702387495/2216591311.jpeg',
-  'https://ext.same-assets.com/1702387495/4053814519.jpeg',
-  'https://ext.same-assets.com/1702387495/2218467190.jpeg',
+  '/images/projects/discipline-design.jpg',
+  '/images/projects/discipline-naval.jpg',
+  '/images/projects/discipline-structural.jpg',
 ];
 
 export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
@@ -48,7 +48,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
-            src="https://ext.same-assets.com/1702387495/2216591311.jpeg"
+            src="/images/projects/discipline-design.jpg"
             alt="Services"
             className="absolute inset-0 h-full w-full object-cover"
           />

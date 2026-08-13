@@ -23,10 +23,10 @@ interface StudioPageClientProps {
 }
 
 const projectImages = [
-  'https://ext.same-assets.com/1702387495/4192207021.jpeg',
-  'https://ext.same-assets.com/1702387495/107137140.jpeg',
-  'https://ext.same-assets.com/1702387495/1823381250.jpeg',
-  'https://ext.same-assets.com/1702387495/33237816.jpeg',
+  '/images/projects/eagle-25-deck.jpg',
+  '/images/projects/cooper-680.jpg',
+  '/images/projects/flamboyant.jpg',
+  '/images/projects/versafish-1400.jpg',
 ];
 
 export function StudioPageClient({ locale, t }: StudioPageClientProps) {
@@ -41,7 +41,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
-            src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
+            src="/images/projects/orizzonte-ii.jpg"
             alt="Studio"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -94,7 +94,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <img
-                  src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
+                  src="/images/projects/frisia-iv.jpg"
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />

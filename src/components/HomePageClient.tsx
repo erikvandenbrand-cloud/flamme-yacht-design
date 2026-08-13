@@ -300,7 +300,7 @@ export function HomePageClient({
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <img
-                  src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
+                  src="/images/projects/orizzonte-ii.jpg"
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />

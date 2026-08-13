@@ -38,9 +38,15 @@ doe je daar. De admin-pagina toont ze alleen; die schrijft niets terug.
 
 ## Afbeeldingen
 
-De afbeeldingen komen nog van `ext.same-assets.com` — de CDN van same.new. Zolang die
-blijft bestaan werkt het, maar de site is er wel afhankelijk van. Op termijn beter:
-de bestanden naar `public/` halen en de paden in `portfolio.ts` omzetten.
+Staan in `public/images/projects/` en zijn afkomstig van flamme-yachtdesign.com en
+eagleboats.nl. De site hangt dus niet meer aan de CDN van same.new.
+
+Alleen de vier niet-gepubliceerde projecten in `portfolio.ts` wijzen nog naar
+`ext.same-assets.com`. Zodra die zijn opgehelderd kunnen de `remotePatterns` in
+`next.config.js` mee opgeruimd worden.
+
+Een nieuw project toevoegen: bestand in `public/images/projects/` zetten en in
+`portfolio.ts` verwijzen als `/images/projects/naam.jpg`.
 
 ## Scripts
 

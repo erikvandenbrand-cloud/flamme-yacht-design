@@ -35,7 +35,7 @@ export default function PortfolioPage({ params }: PageProps) {
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
-            src="https://ext.same-assets.com/1702387495/4192207021.jpeg"
+            src="/images/projects/eagle-25-deck.jpg"
             alt="Portfolio"
             className="absolute inset-0 h-full w-full object-cover"
           />

@@ -42,7 +42,7 @@ export default function ContactPage({ params }: PageProps) {
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
-            src="https://ext.same-assets.com/1702387495/1823381250.jpeg"
+            src="/images/projects/flamboyant.jpg"
             alt="Contact"
             className="absolute inset-0 h-full w-full object-cover"
           />
