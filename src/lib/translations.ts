@@ -27,15 +27,51 @@ export const translations = {
 
     // Home page
     home: {
-      heroTitle: 'Yacht Design',
-      heroSubtitle: 'Craftsmanship & Engineering',
-      heroTagline: 'Bespoke yacht design for vessels between 5 and 25 meters',
-      heroCta: 'Discover Our Work',
-      heroCtaSecondary: 'Our Approach',
+      heroEyebrow: 'YACHT DESIGN · NAVAL ARCHITECTURE · ENGINEERING',
+      heroTitle: 'From first line to build-ready yacht',
+      heroTagline: 'One designer combining yacht design, naval architecture and engineering — from concept sketch through to the drawings the yard builds from.',
+      heroCta: 'View our work',
+      heroCtaSecondary: 'How we work',
 
-      introTitle: 'Designing yachts that are built to be sailed',
-      introText: 'Flamme Yacht Design is a Dutch yacht design studio based in Elburg, specializing in motor yachts, sailing yachts, tenders, and workboats from 5 to 25 meters. We combine creative vision with engineering precision to deliver designs that are as buildable as they are beautiful.',
-      introLink: 'About our studio',
+      // The credit line under each award is not optional: both prizes were
+      // awarded to the yard, not to Flamme.
+      proof: [
+        {
+          label: 'Eagle 25 ST',
+          lines: ['Hiswa Boat of the Year 2025', 'Electric Boat category'],
+          credit: 'designed for Eagle Yachts',
+        },
+        {
+          label: 'Cooper 680',
+          lines: ['Hiswa People\'s Choice 2020'],
+          credit: 'designed for Cooperyacht',
+        },
+        {
+          label: 'Since 2006',
+          lines: ['Independent design studio'],
+          credit: '',
+        },
+      ],
+
+      introTitle: 'From an idea to a yacht that can actually be built.',
+      introText: 'A successful yacht is more than styling alone. Proportion, performance, structure, systems and production have to work together from the first line.',
+      introText2: 'Flamme Yacht Design combines yacht design, naval architecture and engineering in a single process. The same person who sets the sheer line knows how the structure underneath is built up. From tenders to 30 metres, for shipyards and private owners.',
+      introLink: 'About the studio',
+
+      statements: [
+        {
+          title: 'DESIGN WITH PURPOSE',
+          text: 'Strong proportions and a character of its own, without separating form from function.',
+        },
+        {
+          title: 'ENGINEERING FROM THE FIRST LINE',
+          text: 'Hull form, stability, structure and systems are considered from the start.',
+        },
+        {
+          title: 'BUILT AROUND REALITY',
+          text: 'Drawings a shipyard can actually build from.',
+        },
+      ],
 
       servicesTitle: 'What We Do',
       servicesSubtitle: 'From concept to construction-ready design',
@@ -225,15 +261,51 @@ export const translations = {
 
     // Home page
     home: {
-      heroTitle: 'Jachtontwerp',
-      heroSubtitle: 'Ambacht & Innovatie',
-      heroTagline: 'Exclusief jachtontwerp voor vaartuigen van 5 tot 25 meter',
-      heroCta: 'Ontdek Ons Werk',
-      heroCtaSecondary: 'Onze Visie',
+      heroEyebrow: 'JACHTONTWERP · SCHEEPSARCHITECTUUR · ENGINEERING',
+      heroTitle: 'Van eerste lijn tot bouwtekening',
+      heroTagline: 'Eén ontwerper voor jachtontwerp, scheepsarchitectuur en engineering — van eerste schets tot de tekeningen waarmee de werf bouwt.',
+      heroCta: 'Bekijk onze projecten',
+      heroCtaSecondary: 'Hoe we werken',
 
-      introTitle: 'Ontwerpen die gebouwd zijn om mee te varen',
-      introText: 'Flamme Yacht Design is een Nederlands ontwerpbureau in Elburg, gespecialiseerd in motor- en zeiljachten, tenders en werkschepen van 5 tot 25 meter. Wij verbinden creatieve visie met technische precisie tot ontwerpen die even elegant als bouwbaar zijn.',
-      introLink: 'Meer over onze studio',
+      // De attributieregel onder elke prijs is niet optioneel: beide prijzen zijn
+      // aan de werf toegekend, niet aan Flamme.
+      proof: [
+        {
+          label: 'Eagle 25 ST',
+          lines: ['Hiswa Boot van het Jaar 2025', 'categorie Elektroboot'],
+          credit: 'ontwerp voor Eagle Yachts',
+        },
+        {
+          label: 'Cooper 680',
+          lines: ['Hiswa Publiekslieveling 2020'],
+          credit: 'ontwerp voor Cooperyacht',
+        },
+        {
+          label: 'Sinds 2006',
+          lines: ['Zelfstandig ontwerpbureau'],
+          credit: '',
+        },
+      ],
+
+      introTitle: 'Van idee naar een jacht dat écht gebouwd kan worden.',
+      introText: 'Een goed jacht begint niet bij styling alleen. Vorm, vaareigenschappen, constructie, techniek en productie moeten vanaf de eerste lijn met elkaar kloppen.',
+      introText2: 'Flamme Yacht Design combineert jachtontwerp, scheepsarchitectuur en engineering in één traject. Dezelfde ontwerper die de lijnvoering bepaalt, weet ook hoe de constructie eronder wordt opgebouwd. Van tender tot 30 meter, voor werven en particuliere opdrachtgevers.',
+      introLink: 'Over de studio',
+
+      statements: [
+        {
+          title: 'ONTWERP MET REDEN',
+          text: 'Sterke verhoudingen en een eigen karakter, zonder vormgeving los te zien van functie.',
+        },
+        {
+          title: 'TECHNIEK VANAF DE EERSTE LIJN',
+          text: 'Rompvorm, stabiliteit, constructie en systemen worden vanaf het begin meegenomen.',
+        },
+        {
+          title: 'GEBOUWD OP DE PRAKTIJK',
+          text: 'Tekeningen waarmee een werf daadwerkelijk verder kan.',
+        },
+      ],
 
       servicesTitle: 'Onze Expertise',
       servicesSubtitle: 'Van eerste schets tot productierijp ontwerp',

@@ -15,14 +15,17 @@ interface HomePageClientProps {
   locale: 'en' | 'nl';
   t: {
     home: {
+      heroEyebrow: string;
       heroTitle: string;
-      heroSubtitle: string;
       heroTagline: string;
       heroCta: string;
       heroCtaSecondary: string;
+      proof: { label: string; lines: string[]; credit: string }[];
       introTitle: string;
       introText: string;
+      introText2: string;
       introLink: string;
+      statements: { title: string; text: string }[];
       servicesTitle: string;
       servicesSubtitle: string;
       portfolioTitle: string;
@@ -127,20 +130,20 @@ export function HomePageClient({
           className="container-wide relative z-10 pt-24"
           style={{ opacity: heroOpacity }}
         >
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8 text-xs font-semibold uppercase tracking-[0.35em] text-white/70"
+              className="mb-8 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-white/70 md:text-xs md:tracking-[0.35em]"
             >
-              {t.home.heroSubtitle}
+              {t.home.heroEyebrow}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 text-5xl font-light tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl"
+              className="mb-8 text-4xl font-light leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
             >
               {t.home.heroTitle}
             </motion.h1>
@@ -148,7 +151,7 @@ export function HomePageClient({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-12 max-w-lg text-base leading-relaxed text-white/70 md:text-lg"
+              className="mb-12 max-w-xl text-base leading-relaxed text-white/70 md:text-lg"
             >
               {t.home.heroTagline}
             </motion.p>
@@ -162,7 +165,7 @@ export function HomePageClient({
                 {t.home.heroCta}
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#studio" className="btn-outline">
+              <a href="#services" className="btn-outline">
                 {t.home.heroCtaSecondary}
               </a>
             </motion.div>
@@ -181,6 +184,72 @@ export function HomePageClient({
             className="h-12 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent"
           />
         </motion.div>
+      </section>
+
+      {/* PROOF BAR — awards belong to the yards, so every credit line stays visible */}
+      <section className="border-b border-border/40 bg-white">
+        <div className="container-wide">
+          <div className="grid divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {t.home.proof.map((item) => (
+              <div key={item.label} className="py-8 sm:px-8 sm:py-10 sm:first:pl-0 sm:last:pr-0">
+                <p className="text-sm font-medium tracking-tight text-foreground">
+                  {item.label}
+                </p>
+                {item.lines.map((line) => (
+                  <p key={line} className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                    {line}
+                  </p>
+                ))}
+                {item.credit && (
+                  <p className="mt-3 text-xs font-light uppercase tracking-[0.12em] text-muted-foreground/70">
+                    {item.credit}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INTRO SECTION */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="container-wide">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <FadeIn className="lg:col-span-5">
+              <h2 className="text-3xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+                {t.home.introTitle}
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.15} className="lg:col-span-7">
+              <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+                {t.home.introText}
+              </p>
+              <p className="mt-6 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+                {t.home.introText2}
+              </p>
+              <Link
+                href={`/${locale}/studio`}
+                className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-all hover:gap-3"
+              >
+                {t.home.introLink}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </FadeIn>
+          </div>
+
+          <div className="mt-20 grid gap-10 border-t border-border/50 pt-14 md:grid-cols-3 md:gap-12">
+            {t.home.statements.map((statement, index) => (
+              <FadeIn key={statement.title} delay={index * 0.1}>
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
+                  {statement.title}
+                </h3>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                  {statement.text}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* STUDIO SECTION */}
