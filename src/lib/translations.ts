@@ -79,6 +79,26 @@ export const translations = {
         ['Concept', 'Development', 'Production'],
       ],
 
+      // Two audiences, two different promises. Owners are bought with feeling,
+      // yards with predictability — so the tone differs per column on purpose.
+      audiences: {
+        eyebrow: 'For owners and for shipyards',
+        items: [
+          {
+            label: 'For owners',
+            title: 'Translating your vision',
+            text: 'You already know how it should feel. How the boat moves through the water, where you will want to stand, how quiet it gets when the engine goes off. That picture usually arrives long before the words for it.',
+            text2: 'We translate it into lines, dimensions and drawings without losing anything on the way. You do not have to speak the technical language. That is what we are for.',
+          },
+          {
+            label: 'For shipyards',
+            title: 'A tool for a smarter build',
+            text: 'A design that is right saves weeks on the floor. We draw with production in mind: how the structure is built up, in what order, and where your people need to be able to reach.',
+            text2: 'That means fewer questions during the build, fewer changes afterwards and fewer surprises in the schedule. The same designer who sets the sheer line knows what happens on the shop floor.',
+          },
+        ],
+      },
+
       servicesTitle: 'What We Do',
       servicesSubtitle: 'From concept to construction-ready design',
 
@@ -302,6 +322,27 @@ export const translations = {
         ['Motorjachten', 'Zeiljachten', 'Tenders', 'Werkschepen'],
         ['Concept', 'Ontwikkeling', 'Productie'],
       ],
+
+      // Twee publieken, twee beloften. De opdrachtgever wordt geraakt door
+      // gevoel, de werf door voorspelbaarheid — de toon verschilt dus bewust
+      // per kolom.
+      audiences: {
+        eyebrow: 'Voor opdrachtgevers en voor werven',
+        items: [
+          {
+            label: 'Voor opdrachtgevers',
+            title: 'De vertaler van uw visie',
+            text: 'U weet hoe het moet voelen. Hoe de boot door het water gaat, waar u straks het liefst staat, hoe stil het wordt als de motor uitgaat. Dat beeld is er meestal eerder dan de woorden ervoor.',
+            text2: 'Wij vertalen het naar lijnen, maten en tekeningen, zonder dat er onderweg iets van verloren gaat. U hoeft de technische taal niet te spreken. Daar zijn wij voor.',
+          },
+          {
+            label: 'Voor werven',
+            title: 'Het gereedschap voor een slim bouwproces',
+            text: 'Een ontwerp dat klopt scheelt weken in de hal. Wij tekenen met de productie in het hoofd: hoe de constructie wordt opgebouwd, in welke volgorde, en waar uw mensen bij moeten kunnen.',
+            text2: 'Dat scheelt vragen tijdens de bouw, aanpassingen achteraf en verrassingen in de planning. Dezelfde ontwerper die de lijnvoering bepaalt, weet wat er op de werkvloer gebeurt.',
+          },
+        ],
+      },
 
       servicesTitle: 'Onze Expertise',
       servicesSubtitle: 'Van eerste schets tot productierijp ontwerp',

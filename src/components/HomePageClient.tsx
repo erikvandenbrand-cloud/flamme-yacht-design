@@ -32,6 +32,10 @@ interface HomePageClientProps {
       introLink: string;
       statements: { title: string; text: string }[];
       band: string[][];
+      audiences: {
+        eyebrow: string;
+        items: { label: string; title: string; text: string; text2: string }[];
+      };
       servicesTitle: string;
       servicesSubtitle: string;
       portfolioTitle: string;
@@ -252,6 +256,36 @@ export function HomePageClient({
                 </h3>
                 <p className="text-base leading-relaxed text-muted-foreground">
                   {statement.text}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TWO AUDIENCES — the promise reads differently depending on who is asking */}
+      <section className="bg-slate-50 py-24 md:py-32">
+        <div className="container-wide">
+          <FadeIn>
+            <p className="mb-14 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              {t.home.audiences.eyebrow}
+            </p>
+          </FadeIn>
+
+          <div className="grid gap-14 md:grid-cols-2 md:gap-16 lg:gap-24">
+            {t.home.audiences.items.map((item, index) => (
+              <FadeIn key={item.label} delay={index * 0.15}>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  {item.label}
+                </p>
+                <h3 className="mt-4 text-2xl leading-snug tracking-tight text-foreground md:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="measure mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {item.text}
+                </p>
+                <p className="measure mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {item.text2}
                 </p>
               </FadeIn>
             ))}
