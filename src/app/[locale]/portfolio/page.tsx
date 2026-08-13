@@ -1,9 +1,10 @@
 'use client';
 
-import { use } from 'react';
+import { use, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { type Locale, getTranslations } from '@/lib/translations';
 import {
+  type PortfolioItem,
   getRealizedProjects,
   getConceptProjects,
   roleLabels,
@@ -18,11 +19,27 @@ interface PageProps {
   params: Promise<{ locale: Locale }>;
 }
 
+type CategoryFilter = PortfolioItem['category'] | 'all';
+
 export default function PortfolioPage({ params }: PageProps) {
   const { locale } = use(params);
   const t = getTranslations(locale);
-  const realizedProjects = getRealizedProjects();
-  const conceptProjects = getConceptProjects();
+
+  const [filter, setFilter] = useState<CategoryFilter>('all');
+
+  const filterOptions: { value: CategoryFilter; label: string }[] = [
+    { value: 'all', label: t.portfolio.filterAll },
+    { value: 'motor', label: t.portfolio.filterMotor },
+    { value: 'sailing', label: t.portfolio.filterSailing },
+    { value: 'tender', label: t.portfolio.filterTender },
+    { value: 'work', label: t.portfolio.filterWork },
+  ];
+
+  const applyFilter = (items: PortfolioItem[]) =>
+    filter === 'all' ? items : items.filter((item) => item.category === filter);
+
+  const realizedProjects = applyFilter(getRealizedProjects());
+  const conceptProjects = applyFilter(getConceptProjects());
 
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
@@ -80,7 +97,31 @@ export default function PortfolioPage({ params }: PageProps) {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
       </section>
 
+      {/* Category filter — plain text, so it reads as navigation and not as decoration */}
+      <section className="border-b border-border/40 bg-white">
+        <div className="container-wide">
+          <div className="flex flex-wrap gap-x-8 gap-y-3 py-5">
+            {filterOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setFilter(option.value)}
+                aria-pressed={filter === option.value}
+                className={
+                  filter === option.value
+                    ? 'text-sm font-medium tracking-wide text-foreground underline underline-offset-8'
+                    : 'text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground'
+                }
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Realized Projects */}
+      {realizedProjects.length > 0 && (
       <section id="realized" className="scroll-mt-20 bg-white py-16 md:py-24">
         <div className="container-wide">
           <FadeIn className="mb-12">
@@ -134,8 +175,10 @@ export default function PortfolioPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Concepts */}
+      {conceptProjects.length > 0 && (
       <section id="concepts" className="scroll-mt-20 bg-slate-50 py-16 md:py-24">
         <div className="container-wide">
           <FadeIn className="mb-12">
@@ -189,6 +232,7 @@ export default function PortfolioPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      )}
 
       {/* CTA Section - Compact */}
       <section className="py-16 md:py-20 bg-slate-900">
