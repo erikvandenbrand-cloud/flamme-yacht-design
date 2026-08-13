@@ -76,8 +76,8 @@ export const translations = {
       servicesTitle: 'What We Do',
       servicesSubtitle: 'From concept to construction-ready design',
 
-      portfolioTitle: 'Selected Projects',
-      portfolioSubtitle: 'A selection of our work',
+      portfolioTitle: 'Built and afloat',
+      portfolioSubtitle: 'Portfolio',
       portfolioLink: 'View all projects',
 
       ctaTitle: 'Begin Your Journey',
@@ -160,9 +160,9 @@ export const translations = {
 
     // Portfolio page
     portfolio: {
-      title: 'Portfolio',
-      subtitle: 'Selected projects',
-      intro: 'A representative selection of our work across motor yachts, sailing yachts, tenders, and workboats. Each project reflects our commitment to design quality and buildability.',
+      title: 'Built and afloat',
+      subtitle: 'Portfolio',
+      intro: 'Projects that are actually sailing, with the yard that built them. Below them, a number of concepts waiting for the right owner.',
 
       filterAll: 'All',
       filterMotor: 'Motor Yachts',
@@ -290,8 +290,8 @@ export const translations = {
       servicesTitle: 'Onze Expertise',
       servicesSubtitle: 'Van eerste schets tot productierijp ontwerp',
 
-      portfolioTitle: 'Uitgelichte Projecten',
-      portfolioSubtitle: 'Een selectie uit ons werk',
+      portfolioTitle: 'Gebouwd en te water',
+      portfolioSubtitle: 'Portfolio',
       portfolioLink: 'Bekijk alle projecten',
 
       ctaTitle: 'Begin Uw Project',
@@ -374,9 +374,9 @@ export const translations = {
 
     // Portfolio page
     portfolio: {
-      title: 'Portfolio',
-      subtitle: 'Uitgelichte projecten',
-      intro: 'Een representatieve selectie uit ons werk: motorjachten, zeiljachten, tenders en werkschepen. Elk project weerspiegelt onze toewijding aan ontwerpkwaliteit en bouwbaarheid.',
+      title: 'Gebouwd en te water',
+      subtitle: 'Portfolio',
+      intro: 'Hieronder projecten die daadwerkelijk varen, met de werf erbij die ze heeft gebouwd. Daaronder een aantal concepten die wachten op de juiste opdrachtgever.',
 
       filterAll: 'Alle',
       filterMotor: 'Motorjachten',

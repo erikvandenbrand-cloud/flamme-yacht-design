@@ -5,7 +5,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
-import type { PortfolioItem } from '@/lib/portfolio';
+import {
+  type PortfolioItem,
+  statusShortLabels,
+  projectMeta,
+  projectTitle,
+} from '@/lib/portfolio';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -104,17 +109,6 @@ export function HomePageClient({
 
   // Get projects for display
   const displayProjects = allProjects.slice(0, 8);
-
-  // Playful grid layout
-  const getGridClass = (index: number) => {
-    if (index === 0) return 'col-span-2 row-span-2';
-    return '';
-  };
-
-  const getAspectClass = (index: number) => {
-    if (index === 0) return 'aspect-[4/3] md:aspect-square';
-    return 'aspect-[4/3]';
-  };
 
   return (
     <>
@@ -364,46 +358,41 @@ export function HomePageClient({
             </h2>
           </FadeIn>
 
-          {/* Playful Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {/* Project details stay visible — they are the point, not a hover reward */}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
             {displayProjects.map((project, index) => (
-              <motion.div
+              <motion.article
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className={`relative overflow-hidden rounded-xl cursor-pointer group ${getGridClass(index)}`}
+                className="group"
               >
-                <div className={`relative ${getAspectClass(index)} overflow-hidden`}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
                   <img
                     src={project.image}
-                    alt={locale === 'nl' && project.titleNl ? project.titleNl : project.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt={projectTitle(project, locale)}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className={`absolute top-3 left-3 z-20 rounded-lg px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg ${
-                    project.status === 'realized' ? 'bg-emerald-500' : 'bg-amber-500'
-                  }`}>
-                    {project.status === 'realized'
-                      ? (locale === 'en' ? 'Built' : 'Gebouwd')
-                      : 'Concept'
-                    }
-                  </div>
-
-                  <div className="absolute inset-x-0 bottom-0 z-10 p-4 md:p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <p className="text-[10px] font-medium uppercase tracking-wider text-white/70 mb-1">
-                      {categoryLabels[project.category]} · {project.lengthRange}
-                    </p>
-                    <h3 className="text-base md:text-lg font-medium text-white leading-tight">
-                      {locale === 'nl' && project.titleNl ? project.titleNl : project.title}
-                    </h3>
-                  </div>
                 </div>
-              </motion.div>
+                <div className="pt-4">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                    {statusShortLabels[locale][project.status]}
+                    {project.year ? ` · ${project.year}` : ''}
+                  </p>
+                  <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
+                    {projectTitle(project, locale)}
+                  </h3>
+                  <p className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                    {projectMeta(project, locale)}
+                  </p>
+                  <p className="mt-0.5 text-sm font-light text-muted-foreground">
+                    {roleLabels[project.role]}
+                  </p>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>

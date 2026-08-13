@@ -10,6 +10,11 @@ export interface PortfolioItem {
   image: string;
   featured?: boolean;
   published: boolean;
+  // Only filled in where it is confirmed. Anything left out simply does not
+  // show up on the card, so an empty field never becomes a claim.
+  yard?: string;
+  material?: 'aluminium' | 'steel' | 'composite' | 'wood';
+  propulsion?: 'electric' | 'diesel' | 'hybrid' | 'sail' | 'outboard';
 }
 
 // Portfolio data - This would typically come from a CMS or database
@@ -17,17 +22,20 @@ export interface PortfolioItem {
 export const portfolioItems: PortfolioItem[] = [
   // REALIZED PROJECTS
   {
-    id: 'eagle-25-ts',
-    title: 'Eagle 25 TS',
-    titleNl: 'Eagle 25 TS',
+    id: 'eagle-25-st',
+    title: 'Eagle 25 ST',
+    titleNl: 'Eagle 25 ST',
     category: 'tender',
     status: 'realized',
-    lengthRange: '7.6m',
+    lengthRange: '7.60m',
     year: '2025',
     role: 'complete',
     image: 'https://ext.same-assets.com/1702387495/4192207021.jpeg',
     featured: true,
     published: true,
+    yard: 'Eagle Yachts',
+    material: 'aluminium',
+    propulsion: 'electric',
   },
   {
     id: 'cooper-680',
@@ -41,6 +49,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: 'https://ext.same-assets.com/1702387495/107137140.jpeg',
     featured: true,
     published: true,
+    yard: 'Cooperyacht',
   },
   {
     id: 'flamboyant',
@@ -318,3 +327,72 @@ export const statusLabels = {
     concept: 'Concepten',
   },
 };
+
+// Short form for on the cards themselves, set in small capitals.
+export const statusShortLabels = {
+  en: {
+    realized: 'Built',
+    concept: 'Concept',
+  },
+  nl: {
+    realized: 'Gebouwd',
+    concept: 'Concept',
+  },
+};
+
+export const materialLabels = {
+  en: {
+    aluminium: 'aluminium',
+    steel: 'steel',
+    composite: 'composite',
+    wood: 'wood',
+  },
+  nl: {
+    aluminium: 'aluminium',
+    steel: 'staal',
+    composite: 'composiet',
+    wood: 'hout',
+  },
+};
+
+export const propulsionLabels = {
+  en: {
+    electric: 'electric',
+    diesel: 'diesel',
+    hybrid: 'hybrid',
+    sail: 'sail',
+    outboard: 'outboard',
+  },
+  nl: {
+    electric: 'elektrisch',
+    diesel: 'diesel',
+    hybrid: 'hybride',
+    sail: 'zeil',
+    outboard: 'buitenboord',
+  },
+};
+
+type PortfolioLocale = 'en' | 'nl';
+
+// '7.60m' becomes '7,60 m' in Dutch and '7.60 m' in English.
+export function formatLength(lengthRange: string, locale: PortfolioLocale) {
+  const spaced = lengthRange.replace(/\s*m$/i, ' m');
+  return locale === 'nl' ? spaced.replace('.', ',') : spaced;
+}
+
+// Length, material, propulsion and yard on one line. Missing fields drop out
+// rather than showing up empty.
+export function projectMeta(item: PortfolioItem, locale: PortfolioLocale) {
+  return [
+    formatLength(item.lengthRange, locale),
+    item.material ? materialLabels[locale][item.material] : undefined,
+    item.propulsion ? propulsionLabels[locale][item.propulsion] : undefined,
+    item.yard,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
+
+export function projectTitle(item: PortfolioItem, locale: PortfolioLocale) {
+  return locale === 'nl' && item.titleNl ? item.titleNl : item.title;
+}
