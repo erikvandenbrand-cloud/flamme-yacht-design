@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Flamme Yacht Design | Professional Yacht Design Studio",
-  description: "Professional yacht design studio specializing in custom yacht design, naval architecture, and engineering for yachts between 5 and 25 meters.",
+  title: "Flamme Yacht Design | Yacht Design, Naval Architecture & Engineering",
+  description: "Independent Dutch yacht design studio combining yacht design, naval architecture and engineering, from first concept to construction-ready design.",
   keywords: [
     "yacht design",
     "yacht designer",

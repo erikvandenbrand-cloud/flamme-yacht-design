@@ -13,14 +13,14 @@ export const translations = {
 
     // Meta
     meta: {
-      title: 'Flamme Yacht Design | Bespoke Yacht Design 5-25 Meter',
-      description: 'Bespoke yacht design studio specializing in custom yacht design, naval architecture, and engineering for yachts between 5 and 25 meters. Based in the Netherlands.',
+      title: 'Flamme Yacht Design | Yacht Design, Naval Architecture & Engineering',
+      description: 'Independent Dutch yacht design studio combining yacht design, naval architecture and engineering, from first concept to construction-ready design.',
       studioTitle: 'Studio | Flamme Yacht Design',
       studioDescription: 'Meet Herbert van den Brand, founder of Flamme Yacht Design. With experience at Royal Huisman and decades of yacht design expertise, we bring your vision to reality.',
       servicesTitle: 'Services | Flamme Yacht Design',
       servicesDescription: 'Comprehensive yacht design services including exterior styling, naval architecture, structural engineering, and support for shipyards and builders.',
       portfolioTitle: 'Portfolio | Flamme Yacht Design',
-      portfolioDescription: 'Explore our portfolio of yacht designs ranging from 5 to 25 meters. Motor yachts, sailing yachts, tenders, and workboats designed with precision and craftsmanship.',
+      portfolioDescription: 'Motor yachts, sailing yachts, tenders and workboats, from tenders up to 30 metres. Built projects with the yard that built them, alongside concepts in development.',
       contactTitle: 'Contact | Flamme Yacht Design',
       contactDescription: 'Get in touch with Flamme Yacht Design for your next yacht project. Based in Elburg, Netherlands, we work with shipyards and private clients worldwide.',
     },
@@ -71,6 +71,12 @@ export const translations = {
           title: 'BUILT AROUND REALITY',
           text: 'Drawings a shipyard can actually build from.',
         },
+      ],
+
+      band: [
+        ['Design', 'Naval Architecture', 'Engineering'],
+        ['Motor Yachts', 'Sailing Yachts', 'Tenders', 'Workboats'],
+        ['Concept', 'Development', 'Production'],
       ],
 
       servicesTitle: 'What We Do',
@@ -178,23 +184,27 @@ export const translations = {
 
     // Contact page
     contact: {
-      title: 'Contact',
-      subtitle: 'Let\'s discuss your project',
-      intro: 'Whether you\'re a shipyard seeking design support, a builder with a new project, or a private client with a vision, we\'d be pleased to hear from you.',
+      title: 'Have a project in mind?',
+      subtitle: 'Contact',
+      intro: 'Whether you are developing a new yacht, refining an existing concept or looking for design and engineering support, we would be glad to discuss it.',
+      responseTime: 'We reply within two working days.',
 
       formName: 'Name',
       formEmail: 'Email',
       formSubject: 'Subject',
       formMessage: 'Message',
       formSubmit: 'Send Message',
-      formSuccess: 'Thank you for your message. We\'ll respond within 2 business days.',
+      formSuccess: 'Thank you for your message. We reply within two working days.',
 
+      // A second opinion is a low threshold to cross, and often the first
+      // conversation starts there.
       subjectOptions: [
-        'New yacht project',
-        'Naval architecture',
-        'Structural engineering',
+        'New design',
+        'Naval architecture only',
+        'Engineering or build package',
         'Refit or modification',
-        'General inquiry',
+        'Second opinion / advice',
+        'Other',
       ],
 
       addressTitle: 'Visit us',
@@ -209,7 +219,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: 'Bespoke yacht design for vessels between 5 and 25 meters',
+      tagline: 'Yacht design, naval architecture and engineering. From first line to build-ready yacht.',
       copyright: '© 2026 Flamme Yacht Design. All rights reserved.',
       privacy: 'Privacy Policy',
     },
@@ -227,14 +237,14 @@ export const translations = {
 
     // Meta
     meta: {
-      title: 'Flamme Yacht Design | Exclusief Jachtontwerp 5-25 Meter',
-      description: 'Exclusief jachtontwerpbureau gespecialiseerd in maatwerk ontwerp, scheepsarchitectuur en engineering voor jachten van 5 tot 25 meter. Gevestigd in Elburg, Nederland.',
+      title: 'Flamme Yacht Design | Jachtontwerp, Scheepsarchitectuur & Engineering',
+      description: 'Nederlands jachtontwerpbureau voor jachtontwerp, scheepsarchitectuur en engineering. Van eerste concept tot productierijp ontwerp.',
       studioTitle: 'Studio | Flamme Yacht Design',
       studioDescription: 'Maak kennis met Herbert van den Brand, oprichter van Flamme Yacht Design. Met jarenlange ervaring bij Royal Huisman en diepgaande expertise in jachtontwerp.',
       servicesTitle: 'Expertise | Flamme Yacht Design',
       servicesDescription: 'Volledig geïntegreerde ontwerpservices: van exterieurontwerp en scheepsarchitectuur tot constructie-engineering en werfbegeleiding.',
       portfolioTitle: 'Portfolio | Flamme Yacht Design',
-      portfolioDescription: 'Ontdek ons portfolio van 5 tot 25 meter. Motorjachten, zeiljachten, tenders en werkschepen — ontworpen met precisie en vakmanschap.',
+      portfolioDescription: 'Motorjachten, zeiljachten, tenders en werkschepen, van tender tot 30 meter. Gebouwde projecten met de werf erbij, plus concepten in ontwikkeling.',
       contactTitle: 'Contact | Flamme Yacht Design',
       contactDescription: 'Neem contact op voor uw volgende jachtproject. Vanuit Elburg werken wij samen met werven en particuliere opdrachtgevers wereldwijd.',
     },
@@ -285,6 +295,12 @@ export const translations = {
           title: 'GEBOUWD OP DE PRAKTIJK',
           text: 'Tekeningen waarmee een werf daadwerkelijk verder kan.',
         },
+      ],
+
+      band: [
+        ['Ontwerp', 'Scheepsarchitectuur', 'Engineering'],
+        ['Motorjachten', 'Zeiljachten', 'Tenders', 'Werkschepen'],
+        ['Concept', 'Ontwikkeling', 'Productie'],
       ],
 
       servicesTitle: 'Onze Expertise',
@@ -392,9 +408,10 @@ export const translations = {
 
     // Contact page
     contact: {
-      title: 'Contact',
-      subtitle: 'Laten we uw project bespreken',
-      intro: 'Of u nu een werf bent op zoek naar ontwerpexpertise, een bouwer met een nieuw project, of een particuliere opdrachtgever met een visie — wij horen graag van u.',
+      title: 'Een project in gedachten?',
+      subtitle: 'Contact',
+      intro: 'Werkt u aan een nieuw schip, wilt u een bestaand concept verder ontwikkelen of zoekt u ondersteuning bij ontwerp en engineering? We bespreken graag wat Flamme kan bijdragen.',
+      responseTime: 'Reactie binnen twee werkdagen.',
 
       formName: 'Naam',
       formEmail: 'E-mailadres',
@@ -403,12 +420,15 @@ export const translations = {
       formSubmit: 'Verstuur Bericht',
       formSuccess: 'Hartelijk dank voor uw bericht. Wij reageren binnen twee werkdagen.',
 
+      // Een second opinion is een lage drempel en levert vaak het eerste
+      // gesprek op.
       subjectOptions: [
-        'Nieuw jachtproject',
-        'Scheepsarchitectuur',
-        'Constructie-engineering',
-        'Refit of modificatie',
-        'Algemene vraag',
+        'Nieuw ontwerp',
+        'Alleen scheepsarchitectuur',
+        'Engineering of bouwpakket',
+        'Refit of aanpassing',
+        'Second opinion / advies',
+        'Anders',
       ],
 
       addressTitle: 'Bezoekadres',
@@ -423,7 +443,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: 'Exclusief jachtontwerp voor vaartuigen van 5 tot 25 meter',
+      tagline: 'Jachtontwerp, scheepsarchitectuur en engineering. Van eerste lijn tot bouwtekening.',
       copyright: '© 2026 Flamme Yacht Design. Alle rechten voorbehouden.',
       privacy: 'Privacyverklaring',
     },

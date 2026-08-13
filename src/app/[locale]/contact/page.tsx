@@ -79,6 +79,14 @@ export default function ContactPage({ params }: PageProps) {
             >
               {t.contact.intro}
             </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
+              className="mt-4 text-sm font-light text-white/60"
+            >
+              {t.contact.responseTime}
+            </motion.p>
           </div>
         </motion.div>
 

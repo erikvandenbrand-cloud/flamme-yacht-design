@@ -31,6 +31,7 @@ interface HomePageClientProps {
       introText2: string;
       introLink: string;
       statements: { title: string; text: string }[];
+      band: string[][];
       servicesTitle: string;
       servicesSubtitle: string;
       portfolioTitle: string;
@@ -63,6 +64,7 @@ interface HomePageClientProps {
       title: string;
       subtitle: string;
       intro: string;
+      responseTime: string;
       formName: string;
       formEmail: string;
       formSubject: string;
@@ -398,6 +400,22 @@ export function HomePageClient({
         </div>
       </section>
 
+      {/* TYPOGRAPHIC BAND — text and rules only, no icons */}
+      <section className="border-y border-border/40 bg-white py-14 md:py-20">
+        <div className="container-wide">
+          <div className="divide-y divide-border/40">
+            {t.home.band.map((row) => (
+              <p
+                key={row.join()}
+                className="py-4 text-sm font-light tracking-wide text-muted-foreground md:text-base"
+              >
+                {row.join('  /  ')}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONTACT SECTION */}
       <section id="contact" className="py-24 md:py-32 lg:py-40 bg-slate-50 scroll-mt-20">
         <div className="container-wide">
@@ -410,6 +428,9 @@ export function HomePageClient({
             </h2>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
               {t.contact.intro}
+            </p>
+            <p className="mt-3 text-sm font-light text-muted-foreground">
+              {t.contact.responseTime}
             </p>
           </FadeIn>
 
