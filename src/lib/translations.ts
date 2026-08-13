@@ -20,7 +20,7 @@ export const translations = {
       servicesTitle: 'Services | Flamme Yacht Design',
       servicesDescription: 'Comprehensive yacht design services including exterior styling, naval architecture, structural engineering, and support for shipyards and builders.',
       portfolioTitle: 'Portfolio | Flamme Yacht Design',
-      portfolioDescription: 'Motor yachts, sailing yachts, tenders and workboats, from tenders up to 30 metres. Built projects with the yard that built them, alongside concepts in development.',
+      portfolioDescription: 'Motor yachts, sailing yachts, tenders and workboats, from tenders up to 40 metres, each with the yard that built it and the role Flamme had.',
       contactTitle: 'Contact | Flamme Yacht Design',
       contactDescription: 'Get in touch with Flamme Yacht Design for your next yacht project. Based in Elburg, Netherlands, we work with shipyards and private clients worldwide.',
     },
@@ -55,7 +55,7 @@ export const translations = {
 
       introTitle: 'From an idea to a yacht that can actually be built.',
       introText: 'A successful yacht is more than styling alone. Proportion, performance, structure, systems and production have to work together from the first line.',
-      introText2: 'Flamme Yacht Design combines yacht design, naval architecture and engineering in a single process. The same person who sets the sheer line knows how the structure underneath is built up. From tenders to 30 metres, for shipyards and private owners.',
+      introText2: 'Flamme Yacht Design combines yacht design, naval architecture and engineering in a single process. The same person who sets the sheer line knows how the structure underneath is built up. From tenders to 40 metres, for shipyards and private owners.',
       introLink: 'About the studio',
 
       statements: [
@@ -264,7 +264,7 @@ export const translations = {
       servicesTitle: 'Expertise | Flamme Yacht Design',
       servicesDescription: 'Volledig geïntegreerde ontwerpservices: van exterieurontwerp en scheepsarchitectuur tot constructie-engineering en werfbegeleiding.',
       portfolioTitle: 'Portfolio | Flamme Yacht Design',
-      portfolioDescription: 'Motorjachten, zeiljachten, tenders en werkschepen, van tender tot 30 meter. Gebouwde projecten met de werf erbij, plus concepten in ontwikkeling.',
+      portfolioDescription: 'Motorjachten, zeiljachten, tenders en werkschepen, van tender tot 40 meter, elk met de werf erbij en de rol die Flamme had.',
       contactTitle: 'Contact | Flamme Yacht Design',
       contactDescription: 'Neem contact op voor uw volgende jachtproject. Vanuit Elburg werken wij samen met werven en particuliere opdrachtgevers wereldwijd.',
     },
@@ -299,7 +299,7 @@ export const translations = {
 
       introTitle: 'Van idee naar een jacht dat écht gebouwd kan worden.',
       introText: 'Een goed jacht begint niet bij styling alleen. Vorm, vaareigenschappen, constructie, techniek en productie moeten vanaf de eerste lijn met elkaar kloppen.',
-      introText2: 'Flamme Yacht Design combineert jachtontwerp, scheepsarchitectuur en engineering in één traject. Dezelfde ontwerper die de lijnvoering bepaalt, weet ook hoe de constructie eronder wordt opgebouwd. Van tender tot 30 meter, voor werven en particuliere opdrachtgevers.',
+      introText2: 'Flamme Yacht Design combineert jachtontwerp, scheepsarchitectuur en engineering in één traject. Dezelfde ontwerper die de lijnvoering bepaalt, weet ook hoe de constructie eronder wordt opgebouwd. Van tender tot 40 meter, voor werven en particuliere opdrachtgevers.',
       introLink: 'Over de studio',
 
       statements: [
