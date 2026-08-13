@@ -37,7 +37,7 @@ export const translations = {
       // awarded to the yard, not to Flamme.
       proof: [
         {
-          label: 'Eagle 25 ST',
+          label: 'Eagle 25 TS',
           lines: ['Hiswa Boat of the Year 2025', 'Electric Boat category'],
           credit: 'designed for Eagle Yachts',
         },
@@ -281,7 +281,7 @@ export const translations = {
       // aan de werf toegekend, niet aan Flamme.
       proof: [
         {
-          label: 'Eagle 25 ST',
+          label: 'Eagle 25 TS',
           lines: ['Hiswa Boot van het Jaar 2025', 'categorie Elektroboot'],
           credit: 'ontwerp voor Eagle Yachts',
         },
