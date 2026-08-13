@@ -150,7 +150,7 @@ export function HomePageClient({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 text-4xl font-light leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+              className="mb-8 text-4xl leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
             >
               {t.home.heroTitle}
             </motion.h1>
@@ -203,12 +203,12 @@ export function HomePageClient({
                   {item.label}
                 </p>
                 {item.lines.map((line) => (
-                  <p key={line} className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                  <p key={line} className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {line}
                   </p>
                 ))}
                 {item.credit && (
-                  <p className="mt-3 text-xs font-light uppercase tracking-[0.12em] text-muted-foreground/70">
+                  <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground/70">
                     {item.credit}
                   </p>
                 )}
@@ -223,15 +223,15 @@ export function HomePageClient({
         <div className="container-wide">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <FadeIn className="lg:col-span-5">
-              <h2 className="text-3xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+              <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
                 {t.home.introTitle}
               </h2>
             </FadeIn>
             <FadeIn delay={0.15} className="lg:col-span-7">
-              <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="measure text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.home.introText}
               </p>
-              <p className="mt-6 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="measure mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.home.introText2}
               </p>
               <Link
@@ -250,7 +250,7 @@ export function HomePageClient({
                 <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
                   {statement.title}
                 </h3>
-                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                <p className="text-base leading-relaxed text-muted-foreground">
                   {statement.text}
                 </p>
               </FadeIn>
@@ -276,13 +276,13 @@ export function HomePageClient({
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
                 {t.studio.subtitle}
               </p>
-              <h2 className="mb-6 text-3xl font-light tracking-tight md:text-4xl lg:text-5xl">
+              <h2 className="mb-6 text-3xl tracking-tight md:text-4xl lg:text-5xl">
                 {t.studio.title}
               </h2>
-              <p className="mb-4 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mb-4 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.studio.founderBio}
               </p>
-              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mb-8 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.studio.founderBio2}
               </p>
               <div className="flex items-center gap-4">
@@ -306,7 +306,7 @@ export function HomePageClient({
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
               {t.home.servicesSubtitle}
             </p>
-            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl tracking-tight text-foreground md:text-4xl lg:text-5xl">
               {t.home.servicesTitle}
             </h2>
           </FadeIn>
@@ -320,18 +320,18 @@ export function HomePageClient({
                   </span>
                   <span className="h-px flex-1 bg-border/60" />
                 </div>
-                <h3 className="mt-5 text-2xl font-light tracking-tight text-foreground">
+                <h3 className="mt-5 text-2xl tracking-tight text-foreground">
                   {discipline.title}
                 </h3>
-                <p className="mt-2 text-sm font-light text-muted-foreground">
+                <p className="mt-2 text-sm text-muted-foreground">
                   {discipline.subtitle}
                 </p>
-                <p className="mt-5 text-sm font-light leading-relaxed text-muted-foreground">
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   {discipline.text}
                 </p>
                 <ul className="mt-6 divide-y divide-border/50 border-t border-border/50">
                   {discipline.points.map((point) => (
-                    <li key={point} className="py-2.5 text-sm font-light text-muted-foreground">
+                    <li key={point} className="py-2.5 text-sm text-muted-foreground">
                       {point}
                     </li>
                   ))}
@@ -341,7 +341,7 @@ export function HomePageClient({
           </div>
 
           <FadeIn delay={0.3}>
-            <p className="mt-16 border-t border-border/50 pt-8 text-sm font-light tracking-wide text-muted-foreground">
+            <p className="mt-16 border-t border-border/50 pt-8 text-sm tracking-wide text-muted-foreground">
               {t.services.additional.join('  ·  ')}
             </p>
           </FadeIn>
@@ -355,7 +355,7 @@ export function HomePageClient({
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
               {t.home.portfolioSubtitle}
             </p>
-            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl tracking-tight text-foreground md:text-4xl lg:text-5xl">
               {t.home.portfolioTitle}
             </h2>
           </FadeIn>
@@ -387,10 +387,10 @@ export function HomePageClient({
                   <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
                     {projectTitle(project, locale)}
                   </h3>
-                  <p className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {projectMeta(project, locale)}
                   </p>
-                  <p className="mt-0.5 text-sm font-light text-muted-foreground">
+                  <p className="mt-0.5 text-sm text-muted-foreground">
                     {roleLabels[project.role]}
                   </p>
                 </div>
@@ -407,7 +407,7 @@ export function HomePageClient({
             {t.home.band.map((row) => (
               <p
                 key={row.join()}
-                className="py-4 text-sm font-light tracking-wide text-muted-foreground md:text-base"
+                className="py-4 text-sm tracking-wide text-muted-foreground md:text-base"
               >
                 {row.join('  /  ')}
               </p>
@@ -423,13 +423,13 @@ export function HomePageClient({
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
               {t.contact.subtitle}
             </p>
-            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl tracking-tight text-foreground md:text-4xl lg:text-5xl">
               {t.contact.title}
             </h2>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
               {t.contact.intro}
             </p>
-            <p className="mt-3 text-sm font-light text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground">
               {t.contact.responseTime}
             </p>
           </FadeIn>
@@ -600,7 +600,7 @@ export function HomePageClient({
       <section className="py-24 md:py-32 bg-slate-900">
         <div className="container-narrow text-center">
           <FadeIn>
-            <h2 className="mb-6 text-3xl font-light tracking-tight text-white md:text-4xl lg:text-5xl">
+            <h2 className="mb-6 text-3xl tracking-tight text-white md:text-4xl lg:text-5xl">
               {t.home.ctaTitle}
             </h2>
           </FadeIn>

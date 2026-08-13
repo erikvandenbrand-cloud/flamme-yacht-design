@@ -154,7 +154,7 @@ export default function PortfolioAdminPage() {
               Back to site
             </Link>
             <div className="h-6 w-px bg-border" />
-            <h1 className="text-2xl font-light">Portfolio Manager</h1>
+            <h1 className="text-2xl">Portfolio Manager</h1>
           </div>
 
           <Dialog open={isAddDialogOpen} onOpenChange={(open) => {
@@ -334,31 +334,31 @@ export default function PortfolioAdminPage() {
           <Card>
             <CardContent className="p-6">
               <p className="text-sm text-muted-foreground">Total Projects</p>
-              <p className="text-3xl font-light">{items.length}</p>
+              <p className="text-3xl">{items.length}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6">
               <p className="text-sm text-muted-foreground">Realized</p>
-              <p className="text-3xl font-light">{items.filter(i => i.status === 'realized').length}</p>
+              <p className="text-3xl">{items.filter(i => i.status === 'realized').length}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6">
               <p className="text-sm text-muted-foreground">Concepts</p>
-              <p className="text-3xl font-light">{items.filter(i => i.status === 'concept').length}</p>
+              <p className="text-3xl">{items.filter(i => i.status === 'concept').length}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6">
               <p className="text-sm text-muted-foreground">Featured</p>
-              <p className="text-3xl font-light">{items.filter(i => i.featured).length}</p>
+              <p className="text-3xl">{items.filter(i => i.featured).length}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6">
               <p className="text-sm text-muted-foreground">Drafts</p>
-              <p className="text-3xl font-light">{items.filter(i => !i.published).length}</p>
+              <p className="text-3xl">{items.filter(i => !i.published).length}</p>
             </CardContent>
           </Card>
         </div>

@@ -24,7 +24,7 @@
 
     /* Better contrast muted colors */
     --muted: 220 15% 92%;
-    --muted-foreground: 220 15% 35%;
+    --muted-foreground: 220 16% 29%;
 
     --accent: 35 35% 45%;
     --accent-foreground: 0 0% 100%;
@@ -115,6 +115,15 @@
 
   p {
     @apply text-foreground/80;
+    line-height: 1.7;
+  }
+}
+
+@layer utilities {
+  /* Caps a paragraph at a comfortable reading measure. Without this, body text
+     runs the full width of container-wide, which is far too long a line. */
+  .measure {
+    max-width: 66ch;
   }
 }
 

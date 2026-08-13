@@ -66,7 +66,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-4xl font-light tracking-tight text-white md:text-5xl lg:text-6xl"
+              className="mb-6 text-4xl tracking-tight text-white md:text-5xl lg:text-6xl"
             >
               {t.studio.title}
             </motion.h1>
@@ -74,7 +74,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg font-light text-white/70 md:text-xl max-w-xl"
+              className="text-lg text-white/70 md:text-xl max-w-xl"
             >
               {t.studio.intro}
             </motion.p>
@@ -101,14 +101,14 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
               </div>
             </FadeIn>
             <FadeIn direction="right" delay={0.2} className="flex flex-col justify-center">
-              <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
+              <p className="mb-2 text-xs uppercase tracking-[0.35em] text-primary">
                 {t.studio.founderRole}
               </p>
               <h2 className="mb-8 text-3xl font-extralight tracking-tight md:text-4xl">{t.studio.founderTitle}</h2>
-              <p className="mb-6 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mb-6 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.studio.founderBio}
               </p>
-              <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.studio.founderBio2}
               </p>
             </FadeIn>
@@ -147,7 +147,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mx-auto mb-10 max-w-2xl text-base font-light text-white/60 md:text-lg">
+            <p className="mx-auto mb-10 max-w-2xl text-base text-white/60 md:text-lg">
               {locale === 'en'
                 ? 'Whether you\'re a shipyard, builder, or private client, we\'d be pleased to discuss your next yacht project.'
                 : 'Of u nu een werf, bouwer of particuliere klant bent, wij bespreken graag uw volgende jachtproject.'}

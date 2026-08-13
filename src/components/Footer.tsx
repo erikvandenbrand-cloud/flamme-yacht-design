@@ -25,7 +25,7 @@ export function Footer({ locale }: FooterProps) {
                 Flamme Yacht Design
               </span>
             </Link>
-            <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {t.footer.tagline}
             </p>
           </div>
@@ -34,17 +34,17 @@ export function Footer({ locale }: FooterProps) {
           <div className="space-y-6">
             <a
               href="mailto:info@flamme-yachtdesign.com"
-              className="block text-sm font-light text-muted-foreground transition-colors hover:text-foreground"
+              className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               info@flamme-yachtdesign.com
             </a>
             <a
               href="tel:+31626528289"
-              className="block text-sm font-light text-muted-foreground transition-colors hover:text-foreground"
+              className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               +31 6 265 282 89
             </a>
-            <p className="text-sm font-light text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               Industriestraat 25
               <br />
               8081 HH Elburg
@@ -59,12 +59,12 @@ export function Footer({ locale }: FooterProps) {
 
         {/* Bottom Bar - Minimal */}
         <div className="flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
-          <p className="text-xs font-light tracking-wide text-muted-foreground">
+          <p className="text-xs tracking-wide text-muted-foreground">
             {t.footer.copyright}
           </p>
           <Link
             href={`/${locale}/privacy`}
-            className="text-xs font-light tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+            className="text-xs tracking-wide text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.footer.privacy}
           </Link>

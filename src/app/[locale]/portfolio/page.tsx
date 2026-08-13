@@ -60,7 +60,7 @@ export default function PortfolioPage({ params }: PageProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-4 text-4xl font-light tracking-tight text-white md:text-5xl lg:text-6xl"
+              className="mb-4 text-4xl tracking-tight text-white md:text-5xl lg:text-6xl"
             >
               {t.portfolio.title}
             </motion.h1>
@@ -68,7 +68,7 @@ export default function PortfolioPage({ params }: PageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-base font-light text-white/70 md:text-lg max-w-xl"
+              className="text-base text-white/70 md:text-lg max-w-xl"
             >
               {t.portfolio.intro}
             </motion.p>
@@ -85,10 +85,10 @@ export default function PortfolioPage({ params }: PageProps) {
         <div className="container-wide">
           <FadeIn className="mb-12">
             <div className="flex items-baseline gap-4 border-b border-border/50 pb-4">
-              <h2 className="text-2xl font-light tracking-tight text-foreground md:text-3xl">
+              <h2 className="text-2xl tracking-tight text-foreground md:text-3xl">
                 {statusLabels[locale].realized}
               </h2>
-              <span className="text-sm font-light text-muted-foreground">
+              <span className="text-sm text-muted-foreground">
                 {realizedProjects.length}
               </span>
             </div>
@@ -120,10 +120,10 @@ export default function PortfolioPage({ params }: PageProps) {
                   <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
                     {projectTitle(project, locale)}
                   </h3>
-                  <p className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {projectMeta(project, locale)}
                   </p>
-                  <p className="mt-0.5 text-sm font-light text-muted-foreground">
+                  <p className="mt-0.5 text-sm text-muted-foreground">
                     {roleLabels[locale][project.role]}
                   </p>
                 </div>
@@ -138,10 +138,10 @@ export default function PortfolioPage({ params }: PageProps) {
         <div className="container-wide">
           <FadeIn className="mb-12">
             <div className="flex items-baseline gap-4 border-b border-border/50 pb-4">
-              <h2 className="text-2xl font-light tracking-tight text-foreground md:text-3xl">
+              <h2 className="text-2xl tracking-tight text-foreground md:text-3xl">
                 {statusLabels[locale].concept}
               </h2>
-              <span className="text-sm font-light text-muted-foreground">
+              <span className="text-sm text-muted-foreground">
                 {conceptProjects.length}
               </span>
             </div>
@@ -173,10 +173,10 @@ export default function PortfolioPage({ params }: PageProps) {
                   <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
                     {projectTitle(project, locale)}
                   </h3>
-                  <p className="mt-1 text-sm font-light leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {projectMeta(project, locale)}
                   </p>
-                  <p className="mt-0.5 text-sm font-light text-muted-foreground">
+                  <p className="mt-0.5 text-sm text-muted-foreground">
                     {roleLabels[locale][project.role]}
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default function PortfolioPage({ params }: PageProps) {
       <section className="py-16 md:py-20 bg-slate-900">
         <div className="container-narrow text-center">
           <FadeIn>
-            <h2 className="mb-4 text-2xl md:text-3xl font-light tracking-tight text-white">
+            <h2 className="mb-4 text-2xl md:text-3xl tracking-tight text-white">
               {locale === 'en' ? 'Have a project in mind?' : 'Een project in gedachten?'}
             </h2>
           </FadeIn>

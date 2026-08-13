@@ -67,7 +67,7 @@ export default function ContactPage({ params }: PageProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-4xl font-light tracking-tight text-white md:text-5xl lg:text-6xl"
+              className="mb-6 text-4xl tracking-tight text-white md:text-5xl lg:text-6xl"
             >
               {t.contact.title}
             </motion.h1>
@@ -75,7 +75,7 @@ export default function ContactPage({ params }: PageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg font-light text-white/70 md:text-xl max-w-xl"
+              className="text-lg text-white/70 md:text-xl max-w-xl"
             >
               {t.contact.intro}
             </motion.p>
@@ -83,7 +83,7 @@ export default function ContactPage({ params }: PageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="mt-4 text-sm font-light text-white/60"
+              className="mt-4 text-sm text-white/60"
             >
               {t.contact.responseTime}
             </motion.p>

@@ -73,7 +73,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-4xl font-light tracking-tight text-white md:text-5xl lg:text-6xl"
+              className="mb-6 text-4xl tracking-tight text-white md:text-5xl lg:text-6xl"
             >
               {t.services.title}
             </motion.h1>
@@ -81,7 +81,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg font-light text-white/70 md:text-xl max-w-xl"
+              className="text-lg text-white/70 md:text-xl max-w-xl"
             >
               {t.services.intro}
             </motion.p>
@@ -110,13 +110,13 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
                     </span>
                     <span className="h-px flex-1 bg-border/60" />
                   </div>
-                  <h2 className="mt-6 text-3xl font-light tracking-tight md:text-4xl lg:text-5xl">
+                  <h2 className="mt-6 text-3xl tracking-tight md:text-4xl lg:text-5xl">
                     {discipline.title}
                   </h2>
-                  <p className="mt-3 text-base font-light text-muted-foreground md:text-lg">
+                  <p className="mt-3 text-base text-muted-foreground md:text-lg">
                     {discipline.subtitle}
                   </p>
-                  <p className="mt-8 text-base font-light leading-relaxed text-muted-foreground">
+                  <p className="mt-8 text-base leading-relaxed text-muted-foreground">
                     {discipline.text}
                   </p>
 
@@ -125,7 +125,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
                   </p>
                   <ul className="mt-4 divide-y divide-border/50 border-t border-border/50">
                     {discipline.points.map((point) => (
-                      <li key={point} className="py-3 text-sm font-light text-muted-foreground">
+                      <li key={point} className="py-3 text-sm text-muted-foreground">
                         {point}
                       </li>
                     ))}
@@ -151,7 +151,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
       <section className="border-t border-border/40 bg-background py-16 md:py-20">
         <div className="container-wide">
           <FadeIn>
-            <p className="text-sm font-light tracking-wide text-muted-foreground">
+            <p className="text-sm tracking-wide text-muted-foreground">
               {t.services.additional.join('  ·  ')}
             </p>
           </FadeIn>
@@ -167,7 +167,7 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mx-auto mb-10 max-w-2xl text-base font-light text-white/60 md:text-lg">
+            <p className="mx-auto mb-10 max-w-2xl text-base text-white/60 md:text-lg">
               {t.services.ctaText}
             </p>
           </FadeIn>
