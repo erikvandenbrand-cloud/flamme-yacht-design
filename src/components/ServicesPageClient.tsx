@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Compass, Anchor, Ruler, Wrench, RefreshCw } from 'lucide-react';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
+import { ArrowRight } from 'lucide-react';
+import { FadeIn } from '@/components/animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { Locale } from '@/lib/translations';
 
@@ -13,31 +13,28 @@ interface ServicesPageClientProps {
       title: string;
       subtitle: string;
       intro: string;
-      designTitle: string;
-      designSubtitle: string;
-      designText: string;
-      designPoints: string[];
-      navalTitle: string;
-      navalSubtitle: string;
-      navalText: string;
-      navalPoints: string[];
-      structuralTitle: string;
-      structuralSubtitle: string;
-      structuralText: string;
-      structuralPoints: string[];
-      supportTitle: string;
-      supportSubtitle: string;
-      supportText: string;
-      supportPoints: string[];
-      refitTitle: string;
-      refitSubtitle: string;
-      refitText: string;
+      deliverablesLabel: string;
+      disciplines: {
+        number: string;
+        title: string;
+        subtitle: string;
+        text: string;
+        points: string[];
+      }[];
+      additional: string[];
       ctaTitle: string;
       ctaText: string;
       ctaCta: string;
     };
   };
 }
+
+// One image per discipline, in the same order as the translations array.
+const disciplineImages = [
+  'https://ext.same-assets.com/1702387495/2216591311.jpeg',
+  'https://ext.same-assets.com/1702387495/4053814519.jpeg',
+  'https://ext.same-assets.com/1702387495/2218467190.jpeg',
+];
 
 export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
   const { scrollYProgress } = useScroll();
@@ -95,161 +92,69 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* Design Service */}
-      <section className="py-24 md:py-32 lg:py-40 bg-background">
-        <div className="container-wide">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <FadeIn direction="left" className="order-2 lg:order-1">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 mb-6">
-                <Compass className="h-7 w-7 text-primary" />
-              </div>
-              <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
-                {t.services.designSubtitle}
-              </p>
-              <h2 className="mb-6 text-3xl font-extralight tracking-tight md:text-4xl">{t.services.designTitle}</h2>
-              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-                {t.services.designText}
-              </p>
-              <ul className="space-y-4">
-                {t.services.designPoints.map((point, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                    <span className="text-sm font-light text-muted-foreground">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2} className="order-1 lg:order-2">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10">
-                <img
-                  src="https://ext.same-assets.com/1702387495/2216591311.jpeg"
-                  alt={t.services.designTitle}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      {/* The three disciplines, numbered and alternating */}
+      {t.services.disciplines.map((discipline, index) => {
+        const reversed = index % 2 === 1;
 
-      {/* Naval Architecture Service */}
-      <section className="py-24 md:py-32 lg:py-40 bg-slate-50">
-        <div className="container-wide">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <FadeIn direction="left">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10">
-                <img
-                  src="https://ext.same-assets.com/1702387495/4053814519.jpeg"
-                  alt={t.services.navalTitle}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2}>
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 mb-6">
-                <Anchor className="h-7 w-7 text-primary" />
-              </div>
-              <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
-                {t.services.navalSubtitle}
-              </p>
-              <h2 className="mb-6 text-3xl font-extralight tracking-tight md:text-4xl">{t.services.navalTitle}</h2>
-              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-                {t.services.navalText}
-              </p>
-              <ul className="space-y-4">
-                {t.services.navalPoints.map((point, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                    <span className="text-sm font-light text-muted-foreground">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+        return (
+          <section
+            key={discipline.number}
+            className={`py-24 md:py-32 lg:py-40 ${reversed ? 'bg-slate-50' : 'bg-background'}`}
+          >
+            <div className="container-wide">
+              <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+                <FadeIn direction="left" className={reversed ? 'lg:order-2' : ''}>
+                  <div className="flex items-center gap-5">
+                    <span className="text-sm font-medium tracking-[0.2em] text-primary">
+                      {discipline.number}
+                    </span>
+                    <span className="h-px flex-1 bg-border/60" />
+                  </div>
+                  <h2 className="mt-6 text-3xl font-light tracking-tight md:text-4xl lg:text-5xl">
+                    {discipline.title}
+                  </h2>
+                  <p className="mt-3 text-base font-light text-muted-foreground md:text-lg">
+                    {discipline.subtitle}
+                  </p>
+                  <p className="mt-8 text-base font-light leading-relaxed text-muted-foreground">
+                    {discipline.text}
+                  </p>
 
-      {/* Structural Engineering Service */}
-      <section className="py-24 md:py-32 lg:py-40 bg-background">
-        <div className="container-wide">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <FadeIn direction="left" className="order-2 lg:order-1">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 mb-6">
-                <Ruler className="h-7 w-7 text-primary" />
-              </div>
-              <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
-                {t.services.structuralSubtitle}
-              </p>
-              <h2 className="mb-6 text-3xl font-extralight tracking-tight md:text-4xl">{t.services.structuralTitle}</h2>
-              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-                {t.services.structuralText}
-              </p>
-              <ul className="space-y-4">
-                {t.services.structuralPoints.map((point, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                    <span className="text-sm font-light text-muted-foreground">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2} className="order-1 lg:order-2">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10">
-                <img
-                  src="https://ext.same-assets.com/1702387495/2218467190.jpeg"
-                  alt={t.services.structuralTitle}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+                  <p className="mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
+                    {t.services.deliverablesLabel}
+                  </p>
+                  <ul className="mt-4 divide-y divide-border/50 border-t border-border/50">
+                    {discipline.points.map((point) => (
+                      <li key={point} className="py-3 text-sm font-light text-muted-foreground">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </FadeIn>
 
-      {/* Additional Services */}
-      <section className="py-24 md:py-32 lg:py-40 bg-slate-50">
-        <div className="container-wide">
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Shipyard Support */}
-            <FadeIn delay={0}>
-              <div className="card-elevated h-full">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 mb-6">
-                  <Wrench className="h-7 w-7 text-primary" />
-                </div>
-                <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
-                  {t.services.supportSubtitle}
-                </p>
-                <h3 className="mb-4 text-2xl font-extralight tracking-tight">{t.services.supportTitle}</h3>
-                <p className="mb-6 text-sm font-light text-muted-foreground">
-                  {t.services.supportText}
-                </p>
-                <ul className="space-y-3">
-                  {t.services.supportPoints.map((point, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      <span className="text-sm font-light text-muted-foreground">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+                <FadeIn direction="right" delay={0.15} className={reversed ? 'lg:order-1' : ''}>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10">
+                    <img
+                      src={disciplineImages[index]}
+                      alt={discipline.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </FadeIn>
               </div>
-            </FadeIn>
+            </div>
+          </section>
+        );
+      })}
 
-            {/* Refit & Redesign */}
-            <FadeIn delay={0.15}>
-              <div className="card-elevated h-full">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 mb-6">
-                  <RefreshCw className="h-7 w-7 text-primary" />
-                </div>
-                <p className="mb-2 text-xs font-light uppercase tracking-[0.35em] text-primary">
-                  {t.services.refitSubtitle}
-                </p>
-                <h3 className="mb-4 text-2xl font-extralight tracking-tight">{t.services.refitTitle}</h3>
-                <p className="text-sm font-light text-muted-foreground">
-                  {t.services.refitText}
-                </p>
-              </div>
-            </FadeIn>
-          </div>
+      {/* Supporting work — deliberately quiet, these are not the main offer */}
+      <section className="border-t border-border/40 bg-background py-16 md:py-20">
+        <div className="container-wide">
+          <FadeIn>
+            <p className="text-sm font-light tracking-wide text-muted-foreground">
+              {t.services.additional.join('  ·  ')}
+            </p>
+          </FadeIn>
         </div>
       </section>
 

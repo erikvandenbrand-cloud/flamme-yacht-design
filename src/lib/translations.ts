@@ -129,49 +129,55 @@ export const translations = {
       subtitle: 'From initial concept to production-ready design',
       intro: 'We offer a complete range of yacht design services, guiding projects from the first sketch through to detailed construction documentation. Our integrated approach ensures consistency and efficiency throughout the design process.',
 
-      designTitle: 'Yacht Design',
-      designSubtitle: 'Step 1: From concept to visual design',
-      designText: 'The design process focuses on the visual character of your yacht. We develop exterior styling that captures your vision while respecting maritime traditions and practical requirements. From initial sketches to detailed renderings, we create designs that are both distinctive and timeless.',
-      designPoints: [
-        'Concept development and sketching',
-        'Exterior styling and proportions',
-        '3D visualization and renderings',
-        'General arrangement plans',
+      deliverablesLabel: 'What you get',
+
+      // Lead times per discipline are still missing — Herbert has to supply them
+      // before a leadTime field can be added here.
+      disciplines: [
+        {
+          number: '01',
+          title: 'Yacht Design',
+          subtitle: 'Form, proportion & function',
+          text: 'From first sketches and concept development to exterior styling, layout and 3D form development. We develop yachts with a character of their own, in which appearance, use and technology are considered together from the outset.',
+          points: [
+            'Sketches and concept directions',
+            'Exterior styling and sheer line',
+            'General arrangement',
+            '3D model and renders',
+          ],
+        },
+        {
+          number: '02',
+          title: 'Naval Architecture',
+          subtitle: 'Performance behind the design',
+          text: 'A yacht has to perform as well as it looks. Hull form, hydrostatics, stability, weight distribution and propulsion are developed into a balanced, efficient vessel.',
+          points: [
+            'Lines plan and hull form',
+            'Stability and hydrostatics',
+            'Resistance and propulsion',
+            'Weight estimate and distribution',
+          ],
+        },
+        {
+          number: '03',
+          title: 'Engineering',
+          subtitle: 'From design to production',
+          text: 'The design is translated into structural and production information that lets a shipyard build efficiently and accurately, matched to material, production method and applicable rules.',
+          points: [
+            'Structural calculations',
+            'Production and detail drawings',
+            'Material and plate lists',
+            'Class and CE documentation',
+          ],
+        },
       ],
 
-      navalTitle: 'Naval Architecture',
-      navalSubtitle: 'Step 2: From design to engineering',
-      navalText: 'Naval architecture transforms visual design into a vessel that performs. We integrate hydrodynamics, stability calculations, weight distribution, and propulsion design to create a balanced, efficient yacht that meets your performance requirements.',
-      navalPoints: [
-        'Hull form development',
-        'Stability and hydrostatics',
-        'Propulsion and resistance calculations',
-        'Weight estimation and distribution',
+      additional: [
+        'Shipyard support',
+        'Refit & redesign',
+        'Design optimisation',
+        'Technical consultancy',
       ],
-
-      structuralTitle: 'Structural Engineering',
-      structuralSubtitle: 'Step 3: From engineering to production',
-      structuralText: 'Structural engineering delivers the construction documentation that shipyards need. We create detailed drawings, construction specifications, and material schedules that enable efficient production while ensuring structural integrity and classification compliance.',
-      structuralPoints: [
-        'Structural design and calculations',
-        'Construction drawings and details',
-        'Material specifications',
-        'Classification documentation',
-      ],
-
-      supportTitle: 'Shipyard Support',
-      supportSubtitle: 'Partnership throughout construction',
-      supportText: 'We support shipyards and builders throughout the construction process. From production consultation to design modifications, we remain available to ensure the build proceeds smoothly and the final yacht matches the design intent.',
-      supportPoints: [
-        'Production consultation',
-        'Design modifications and updates',
-        'Technical support during build',
-        'Sea trials and delivery support',
-      ],
-
-      refitTitle: 'Refit & Redesign',
-      refitSubtitle: 'New life for existing vessels',
-      refitText: 'We provide design services for yacht refits and modifications, from minor updates to comprehensive redesigns. Our approach respects the original character while introducing improvements that enhance performance, functionality, or aesthetics.',
 
       ctaTitle: 'Discuss your project',
       ctaText: 'Every yacht project is unique. Contact us to discuss your requirements and how we can support your vision.',
@@ -363,49 +369,55 @@ export const translations = {
       subtitle: 'Van eerste concept tot productierijp ontwerp',
       intro: 'Wij bieden een volledig geïntegreerd pakket van ontwerpdiensten — van de eerste schets tot gedetailleerde bouwdocumentatie. Onze aanpak waarborgt consistentie en efficiëntie gedurende het gehele ontwerpproces.',
 
-      designTitle: 'Jachtontwerp',
-      designSubtitle: 'Fase 1: Van concept naar visueel ontwerp',
-      designText: 'Het ontwerpproces richt zich op het visuele karakter van uw jacht. Wij ontwikkelen een exterieur dat uw visie vastlegt met respect voor maritieme traditie en praktische eisen. Van eerste schetsen tot gedetailleerde visualisaties — wij creëren ontwerpen die onderscheidend én tijdloos zijn.',
-      designPoints: [
-        'Conceptontwikkeling en schetsen',
-        'Exterieurontwerp en proporties',
-        '3D-visualisatie en renders',
-        'Algemene indelingstekeningen',
+      deliverablesLabel: 'Wat je krijgt',
+
+      // Doorlooptijden per fase ontbreken nog — die moet Herbert aanleveren
+      // voordat hier een leadTime-veld bij kan.
+      disciplines: [
+        {
+          number: '01',
+          title: 'Jachtontwerp',
+          subtitle: 'Vorm, verhouding en functie',
+          text: 'Van eerste schets en conceptontwikkeling tot exterieur, indeling en 3D-vormgeving. We ontwikkelen jachten met een eigen karakter, waarbij uitstraling, gebruik en techniek vanaf het begin in samenhang worden ontworpen.',
+          points: [
+            'Schetsen en conceptrichtingen',
+            'Exterieurontwerp en lijnvoering',
+            'Algemeen plan (GA)',
+            '3D-model en renders',
+          ],
+        },
+        {
+          number: '02',
+          title: 'Scheepsarchitectuur',
+          subtitle: 'Prestatie achter het ontwerp',
+          text: 'Een mooi ontwerp moet ook goed varen. Rompvorm, hydrostatica, stabiliteit, gewichtsverdeling en voortstuwing worden geïntegreerd tot een gebalanceerd en efficiënt schip.',
+          points: [
+            'Lijnenplan en rompvorm',
+            'Stabiliteit en hydrostatica',
+            'Weerstand en voortstuwing',
+            'Gewichtsraming en -verdeling',
+          ],
+        },
+        {
+          number: '03',
+          title: 'Engineering',
+          subtitle: 'Van ontwerp naar productie',
+          text: 'Het ontwerp wordt vertaald naar constructie- en productie-informatie waarmee een werf efficiënt en nauwkeurig kan bouwen, afgestemd op materiaal, productiemethode en geldende regelgeving.',
+          points: [
+            'Constructieberekening',
+            'Productie- en detailtekeningen',
+            'Materiaal- en platenlijst',
+            'Klasse- en CE-documentatie',
+          ],
+        },
       ],
 
-      navalTitle: 'Scheepsarchitectuur',
-      navalSubtitle: 'Fase 2: Van ontwerp naar engineering',
-      navalText: 'Scheepsarchitectuur transformeert visueel ontwerp naar een vaartuig dat optimaal presteert. Wij integreren hydrodynamica, stabiliteitsberekeningen, gewichtsverdeling en voortstuwingsontwerp tot een gebalanceerd, efficiënt jacht dat aan uw prestatie-eisen voldoet.',
-      navalPoints: [
-        'Rompvorm-ontwikkeling',
-        'Stabiliteit en hydrostatica',
-        'Voortstuwing en weerstandsberekeningen',
-        'Gewichtsschatting en verdeling',
+      additional: [
+        'Werfbegeleiding',
+        'Refit & herontwerp',
+        'Ontwerpoptimalisatie',
+        'Technisch advies',
       ],
-
-      structuralTitle: 'Constructie-Engineering',
-      structuralSubtitle: 'Fase 3: Van engineering naar productie',
-      structuralText: 'Constructie-engineering levert de bouwdocumentatie die werven nodig hebben. Wij maken gedetailleerde tekeningen, constructiespecificaties en materiaallijsten die efficiënte productie mogelijk maken met behoud van structurele integriteit en classificatie-eisen.',
-      structuralPoints: [
-        'Constructief ontwerp en berekeningen',
-        'Bouwtekeningen en details',
-        'Materiaalspecificaties',
-        'Classificatiedocumentatie',
-      ],
-
-      supportTitle: 'Werfbegeleiding',
-      supportSubtitle: 'Partnerschap tijdens de bouw',
-      supportText: 'Wij begeleiden werven en bouwers gedurende het gehele bouwtraject. Van productieconsultatie tot ontwerpwijzigingen — wij blijven beschikbaar om te waarborgen dat de bouw soepel verloopt en het eindresultaat overeenkomt met de ontwerpintentie.',
-      supportPoints: [
-        'Productieconsultatie',
-        'Ontwerpwijzigingen en updates',
-        'Technische ondersteuning tijdens bouw',
-        'Proefvaart en opleveringsbegeleiding',
-      ],
-
-      refitTitle: 'Refit & Herontwerp',
-      refitSubtitle: 'Nieuw leven voor bestaande vaartuigen',
-      refitText: 'Wij verzorgen ontwerpdiensten voor jachtrefits en modificaties — van subtiele updates tot ingrijpende herontwerpen. Onze aanpak respecteert het oorspronkelijke karakter terwijl wij verbeteringen introduceren die prestaties, functionaliteit of esthetiek naar een hoger niveau tillen.',
 
       ctaTitle: 'Bespreek Uw Project',
       ctaText: 'Elk jachtproject is uniek. Neem contact met ons op om uw wensen te bespreken en te ontdekken hoe wij uw visie kunnen ondersteunen.',

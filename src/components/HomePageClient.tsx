@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowRight, Compass, Anchor, Ruler, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
 import type { PortfolioItem } from '@/lib/portfolio';
 import { Input } from '@/components/ui/input';
@@ -34,6 +34,17 @@ interface HomePageClientProps {
       ctaTitle: string;
       ctaText: string;
       ctaCta: string;
+    };
+    services: {
+      deliverablesLabel: string;
+      disciplines: {
+        number: string;
+        title: string;
+        subtitle: string;
+        text: string;
+        points: string[];
+      }[];
+      additional: string[];
     };
     studio: {
       title: string;
@@ -295,7 +306,7 @@ export function HomePageClient({
       {/* SERVICES SECTION */}
       <section id="services" className="py-24 md:py-32 lg:py-40 bg-slate-50 scroll-mt-20">
         <div className="container-wide">
-          <FadeIn className="mb-16 text-center">
+          <FadeIn className="mb-16 max-w-2xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
               {t.home.servicesSubtitle}
             </p>
@@ -304,61 +315,40 @@ export function HomePageClient({
             </h2>
           </FadeIn>
 
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-            {/* Yacht Design */}
-            <FadeIn delay={0}>
-              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600" />
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 border border-teal-100 transition-all group-hover:bg-teal-100 group-hover:scale-110">
-                  <Compass className="h-7 w-7 text-teal-600" />
+          <div className="grid gap-12 md:grid-cols-3 md:gap-10">
+            {t.services.disciplines.map((discipline, index) => (
+              <FadeIn key={discipline.number} delay={index * 0.12}>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm font-medium tracking-[0.2em] text-primary">
+                    {discipline.number}
+                  </span>
+                  <span className="h-px flex-1 bg-border/60" />
                 </div>
-                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
-                  {locale === 'en' ? 'Yacht Design' : 'Jachtontwerp'}
+                <h3 className="mt-5 text-2xl font-light tracking-tight text-foreground">
+                  {discipline.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-foreground/60">
-                  {locale === 'en'
-                    ? 'From concept sketches to refined exterior styling. Creating distinctive designs that capture your vision and stand out on the water.'
-                    : 'Van conceptschetsen tot verfijnd exterieurontwerp. Onderscheidende ontwerpen die uw visie vastleggen en opvallen op het water.'}
+                <p className="mt-2 text-sm font-light text-muted-foreground">
+                  {discipline.subtitle}
                 </p>
-              </div>
-            </FadeIn>
-
-            {/* Naval Architecture */}
-            <FadeIn delay={0.15}>
-              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-blue-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600" />
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 transition-all group-hover:bg-blue-100 group-hover:scale-110">
-                  <Anchor className="h-7 w-7 text-blue-600" />
-                </div>
-                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
-                  {locale === 'en' ? 'Naval Architecture' : 'Scheepsarchitectuur'}
-                </h3>
-                <p className="text-sm leading-relaxed text-foreground/60">
-                  {locale === 'en'
-                    ? 'Hull form development, stability calculations, and performance optimization for vessels that perform beautifully in all conditions.'
-                    : 'Rompvorm-ontwikkeling, stabiliteitsberekeningen en prestatie-optimalisatie voor vaartuigen die optimaal presteren in alle omstandigheden.'}
+                <p className="mt-5 text-sm font-light leading-relaxed text-muted-foreground">
+                  {discipline.text}
                 </p>
-              </div>
-            </FadeIn>
-
-            {/* Structural Engineering */}
-            <FadeIn delay={0.3}>
-              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-amber-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600" />
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 border border-amber-100 transition-all group-hover:bg-amber-100 group-hover:scale-110">
-                  <Ruler className="h-7 w-7 text-amber-600" />
-                </div>
-                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
-                  {locale === 'en' ? 'Structural Engineering' : 'Constructie-Engineering'}
-                </h3>
-                <p className="text-sm leading-relaxed text-foreground/60">
-                  {locale === 'en'
-                    ? 'Detailed construction drawings and specifications that enable efficient production and ensure structural integrity for years to come.'
-                    : 'Gedetailleerde bouwtekeningen en specificaties voor efficiënte productie en structurele integriteit voor de komende jaren.'}
-                </p>
-              </div>
-            </FadeIn>
+                <ul className="mt-6 divide-y divide-border/50 border-t border-border/50">
+                  {discipline.points.map((point) => (
+                    <li key={point} className="py-2.5 text-sm font-light text-muted-foreground">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </FadeIn>
+            ))}
           </div>
+
+          <FadeIn delay={0.3}>
+            <p className="mt-16 border-t border-border/50 pt-8 text-sm font-light tracking-wide text-muted-foreground">
+              {t.services.additional.join('  ·  ')}
+            </p>
+          </FadeIn>
         </div>
       </section>
 
