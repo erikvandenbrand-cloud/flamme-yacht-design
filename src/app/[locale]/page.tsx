@@ -1,5 +1,5 @@
 import { type Locale, getTranslations } from '@/lib/translations';
-import { getFeaturedPortfolio, getPublishedPortfolio, categoryLabels, roleLabels } from '@/lib/portfolio';
+import { getPublishedPortfolio } from '@/lib/portfolio';
 import type { Metadata } from 'next';
 import { HomePageClient } from '@/components/HomePageClient';
 
@@ -27,17 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   const t = getTranslations(locale);
-  const featuredProjects = getFeaturedPortfolio();
   const allProjects = getPublishedPortfolio();
 
-  return (
-    <HomePageClient
-      locale={locale}
-      t={t}
-      featuredProjects={featuredProjects}
-      allProjects={allProjects}
-      categoryLabels={categoryLabels[locale]}
-      roleLabels={roleLabels[locale]}
-    />
-  );
+  return <HomePageClient locale={locale} t={t} allProjects={allProjects} />;
 }

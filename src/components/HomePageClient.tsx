@@ -5,12 +5,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
-import {
-  type PortfolioItem,
-  statusShortLabels,
-  projectMeta,
-  projectTitle,
-} from '@/lib/portfolio';
+import type { PortfolioItem } from '@/lib/portfolio';
+import { ProjectCard } from '@/components/ProjectCard';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -84,19 +80,13 @@ interface HomePageClientProps {
       address: string;
     };
   };
-  featuredProjects: PortfolioItem[];
   allProjects: PortfolioItem[];
-  categoryLabels: Record<string, string>;
-  roleLabels: Record<string, string>;
 }
 
 export function HomePageClient({
   locale,
   t,
-  featuredProjects,
   allProjects,
-  categoryLabels,
-  roleLabels,
 }: HomePageClientProps) {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
@@ -397,40 +387,12 @@ export function HomePageClient({
           {/* Project details stay visible — they are the point, not a hover reward */}
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
             {displayProjects.map((project, index) => (
-              <motion.article
+              <ProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
-                  <img
-                    src={project.image}
-                    alt={projectTitle(project, locale)}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    {statusShortLabels[locale][project.status]}
-                    {project.year ? ` · ${project.year}` : ''}
-                  </p>
-                  <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
-                    {projectTitle(project, locale)}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {projectMeta(project, locale)}
-                  </p>
-                  {project.role && (
-                    <p className="mt-0.5 text-sm text-muted-foreground">
-                      {roleLabels[project.role]}
-                    </p>
-                  )}
-                </div>
-              </motion.article>
+                project={project}
+                locale={locale}
+                index={index}
+              />
             ))}
           </div>
         </div>

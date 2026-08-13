@@ -7,13 +7,10 @@ import {
   type PortfolioItem,
   getRealizedProjects,
   getConceptProjects,
-  roleLabels,
   statusLabels,
-  statusShortLabels,
-  projectMeta,
-  projectTitle,
 } from '@/lib/portfolio';
 import { FadeIn } from '@/components/animations';
+import { ProjectCard } from '@/components/ProjectCard';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -137,40 +134,12 @@ export default function PortfolioPage({ params }: PageProps) {
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
             {realizedProjects.map((project, index) => (
-              <motion.article
+              <ProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
-                className="group"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
-                  <img
-                    src={project.image}
-                    alt={projectTitle(project, locale)}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    {statusShortLabels[locale][project.status]}
-                    {project.year ? ` · ${project.year}` : ''}
-                  </p>
-                  <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
-                    {projectTitle(project, locale)}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {projectMeta(project, locale)}
-                  </p>
-                  {project.role && (
-                    <p className="mt-0.5 text-sm text-muted-foreground">
-                      {roleLabels[locale][project.role]}
-                    </p>
-                  )}
-                </div>
-              </motion.article>
+                project={project}
+                locale={locale}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -194,40 +163,12 @@ export default function PortfolioPage({ params }: PageProps) {
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
             {conceptProjects.map((project, index) => (
-              <motion.article
+              <ProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
-                  <img
-                    src={project.image}
-                    alt={projectTitle(project, locale)}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    {statusShortLabels[locale][project.status]}
-                    {project.year ? ` · ${project.year}` : ''}
-                  </p>
-                  <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground">
-                    {projectTitle(project, locale)}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {projectMeta(project, locale)}
-                  </p>
-                  {project.role && (
-                    <p className="mt-0.5 text-sm text-muted-foreground">
-                      {roleLabels[locale][project.role]}
-                    </p>
-                  )}
-                </div>
-              </motion.article>
+                project={project}
+                locale={locale}
+                index={index}
+              />
             ))}
           </div>
         </div>

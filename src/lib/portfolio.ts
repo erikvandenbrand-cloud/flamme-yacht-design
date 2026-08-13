@@ -4,25 +4,31 @@ export interface PortfolioItem {
   titleNl?: string;
   category: 'motor' | 'sailing' | 'tender' | 'work';
   status: 'realized' | 'concept';
-  // Lengte en rol zijn optioneel: van een deel van de oudere projecten is dat
+  // Lengte, jaar en rol zijn optioneel: van een deel van de projecten is dat
   // niet vastgelegd. Liever een regel die wegvalt dan een verzonnen getal.
   lengthRange?: string;
   year?: string;
   role?: 'design' | 'naval' | 'structural' | 'complete';
   image: string;
+  // Extra foto's voor de carousel. De cover uit `image` telt als eerste beeld,
+  // dus hier staan alleen de aanvullende.
+  images?: string[];
   featured?: boolean;
   published: boolean;
-  // Only filled in where it is confirmed. Anything left out simply does not
-  // show up on the card, so an empty field never becomes a claim.
+  // Alleen ingevuld waar het bevestigd is op flamme-yachtdesign.com of bij de
+  // werf zelf. Een leeg veld valt weg en wordt dus nooit een claim.
   yard?: string;
   material?: 'aluminium' | 'steel' | 'composite' | 'wood';
   propulsion?: 'electric' | 'diesel' | 'hybrid' | 'sail' | 'outboard';
+  // De externe ontwerper, waar Flamme alleen de techniek deed. Zonder deze
+  // vermelding zou het portfolio andermans ontwerp als eigen werk tonen.
+  designer?: string;
 }
 
-// Portfolio data - This would typically come from a CMS or database
-// For now, using JSON that can be easily updated
+// Gegevens overgenomen van flamme-yachtdesign.com, per project geverifieerd op
+// de detailpagina. Jaartallen staan er alleen bij waar de site een concrete
+// gebeurtenis noemt, zoals een tewaterlating of oplevering.
 export const portfolioItems: PortfolioItem[] = [
-  // REALIZED PROJECTS
   {
     // TS, niet ST: de werf voert de hele reeks als 25TS, 28TS en 32TS, en
     // Flamme zelf schrijft het ook zo. Alleen de prijswinnaarspagina hanteert
@@ -36,9 +42,13 @@ export const portfolioItems: PortfolioItem[] = [
     year: '2025',
     role: 'complete',
     image: '/images/projects/eagle-25-deck.jpg',
+    images: [
+      '/images/projects/eagle-25-interieur.jpg',
+      '/images/projects/eagle-25.jpg',
+    ],
     featured: true,
     published: true,
-    yard: 'Eagle Yachts',
+    yard: 'Eagle Boats',
     material: 'aluminium',
     propulsion: 'electric',
   },
@@ -49,120 +59,15 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'tender',
     status: 'realized',
     lengthRange: '6.8m',
-    year: '2020',
+    year: '2019',
     role: 'complete',
     image: '/images/projects/cooper-680.jpg',
     featured: true,
     published: true,
     yard: 'Cooperyacht',
+    material: 'composite',
+    propulsion: 'diesel',
   },
-  {
-    id: 'flamboyant',
-    title: 'Flamboyant',
-    titleNl: 'Flamboyant',
-    category: 'sailing',
-    status: 'realized',
-    lengthRange: '12m',
-    year: '2019',
-    role: 'complete',
-    image: '/images/projects/flamboyant.jpg',
-    featured: true,
-    published: true,
-  },
-  {
-    id: 'versafish-1400',
-    title: 'Versafish 1400',
-    titleNl: 'Versafish 1400',
-    category: 'work',
-    status: 'realized',
-    lengthRange: '14m',
-    year: '2019',
-    role: 'complete',
-    image: '/images/projects/versafish-1400.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'e680',
-    title: 'E680 Classic',
-    titleNl: 'E680 Klassieke Schoonheid',
-    category: 'tender',
-    status: 'realized',
-    lengthRange: '6.8m',
-    year: '2018',
-    role: 'complete',
-    image: '/images/projects/e680.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'frisia-iv',
-    title: 'Frisia IV',
-    titleNl: 'Frisia IV',
-    category: 'motor',
-    status: 'realized',
-    lengthRange: '18m',
-    year: '2017',
-    role: 'naval',
-    image: '/images/projects/frisia-iv.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'slim-550',
-    title: 'SLIM 550',
-    titleNl: 'SLIM 550',
-    category: 'tender',
-    status: 'realized',
-    lengthRange: '5.5m',
-    year: '2019',
-    role: 'complete',
-    image: '/images/projects/slim-550.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'lxry-700',
-    title: 'LXRY 700',
-    titleNl: 'LXRY 700',
-    category: 'tender',
-    status: 'realized',
-    lengthRange: '7m',
-    year: '2019',
-    role: 'complete',
-    image: '/images/projects/lxry-700.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'xplore-580',
-    title: 'XPLORE Boats 580',
-    titleNl: 'XPLORE Boats 580',
-    category: 'tender',
-    status: 'realized',
-    lengthRange: '5.8m',
-    year: '2018',
-    role: 'complete',
-    image: '/images/projects/xplore-580.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'venandi-900',
-    title: 'Venandi 900',
-    titleNl: 'Venandi 900',
-    category: 'tender',
-    status: 'realized',
-    lengthRange: '9m',
-    year: '2017',
-    role: 'complete',
-    image: '/images/projects/venandi-900.jpg',
-    featured: false,
-    published: true,
-  },
-  // Orizzonte II staat op flamme-yachtdesign.com als Proefvaart Orizzonte II
-  // 30m, met een foto van het afgebouwde schip. Een proefvaart doe je niet met
-  // een concept, dus dit is een gerealiseerd project en geen ontwerpstudie.
   {
     id: 'orizzonte-ii-30m',
     title: 'Orizzonte II',
@@ -171,26 +76,106 @@ export const portfolioItems: PortfolioItem[] = [
     status: 'realized',
     lengthRange: '30m',
     year: '2020',
-    role: 'design',
+    role: 'structural',
     image: '/images/projects/orizzonte-ii.jpg',
     featured: true,
     published: true,
+    material: 'aluminium',
+    designer: 'Theo Werner',
   },
-
-  // Projecten van flamme-yachtdesign.com die in de export ontbraken. Van deze
-  // zes is alleen naam en beeld bekend; jaartal en rol ontbreken nog. De
-  // lengtes hieronder komen uit het typenummer, zoals overal in dit portfolio
-  // (Cooper 680 is 6,8 m). Waar het typenummer niets zegt, blijft lengte leeg.
   {
-    id: 'cooper-800',
-    title: 'Cooper 800',
-    titleNl: 'Cooper 800',
-    category: 'tender',
+    id: 'frisia-iv',
+    title: 'Frisia IV',
+    titleNl: 'Frisia IV',
+    category: 'motor',
     status: 'realized',
-    lengthRange: '8m',
-    image: '/images/projects/cooper-800.jpg',
+    lengthRange: '40m',
+    image: '/images/projects/frisia-iv.jpg',
+    featured: true,
+    published: true,
+  },
+  {
+    id: 'flamboyant',
+    title: 'Flamboyant',
+    titleNl: 'Flamboyant',
+    category: 'sailing',
+    status: 'realized',
+    lengthRange: '12m',
+    image: '/images/projects/flamboyant.jpg',
+    featured: true,
+    published: true,
+    propulsion: 'sail',
+  },
+  {
+    id: 'versafish-1400',
+    title: 'Versafish 1400',
+    titleNl: 'Versafish 1400',
+    category: 'work',
+    status: 'realized',
+    lengthRange: '14m',
+    role: 'complete',
+    image: '/images/projects/versafish-1400.jpg',
     featured: false,
     published: true,
+    yard: 'Stapert Watersport',
+    material: 'aluminium',
+  },
+  {
+    id: 'timeless-25',
+    title: 'Timeless 25',
+    titleNl: 'Timeless 25',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '7.6m',
+    year: '2019',
+    role: 'complete',
+    image: '/images/projects/timeless-25.jpg',
+    featured: true,
+    published: true,
+    yard: 'Stapert Watersport',
+    material: 'aluminium',
+  },
+  {
+    id: 'e680',
+    title: 'E680 Classic',
+    titleNl: 'E680 Klassieke Schoonheid',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '6.8m',
+    role: 'complete',
+    image: '/images/projects/e680.jpg',
+    featured: false,
+    published: true,
+    yard: 'Van Vossen',
+    material: 'aluminium',
+    propulsion: 'electric',
+  },
+  {
+    id: 'slim-550',
+    title: 'SLIM 550',
+    titleNl: 'SLIM 550',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '5.5m',
+    role: 'complete',
+    image: '/images/projects/slim-550.jpg',
+    featured: false,
+    published: true,
+    yard: 'Baaiman Jachtbouw',
+    material: 'aluminium',
+  },
+  {
+    id: 'lxry-700',
+    title: 'LXRY 700',
+    titleNl: 'LXRY 700',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '7m',
+    role: 'complete',
+    image: '/images/projects/lxry-700.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
   },
   {
     id: 'lxry-900',
@@ -199,9 +184,93 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'tender',
     status: 'realized',
     lengthRange: '9m',
+    role: 'complete',
     image: '/images/projects/lxry-900.jpg',
     featured: false,
     published: true,
+    material: 'aluminium',
+  },
+  {
+    id: 'xplore-580',
+    title: 'XPLORE Boats 580',
+    titleNl: 'XPLORE Boats 580',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '5.8m',
+    role: 'complete',
+    image: '/images/projects/xplore-580.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+  },
+  {
+    id: 'venandi-900',
+    title: 'Venandi 900',
+    titleNl: 'Venandi 900',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '9m',
+    role: 'naval',
+    image: '/images/projects/venandi-900.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+    designer: 'Guido de Groot',
+  },
+  {
+    id: 'cooper-800',
+    title: 'Cooper 800',
+    titleNl: 'Cooper 800',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '8m',
+    role: 'naval',
+    image: '/images/projects/cooper-800.jpg',
+    featured: false,
+    published: true,
+    yard: 'Cooperyacht',
+    material: 'composite',
+  },
+  {
+    id: 'revis',
+    title: 'Revis',
+    titleNl: 'Revis',
+    category: 'tender',
+    status: 'realized',
+    role: 'design',
+    image: '/images/projects/revis.jpg',
+    featured: false,
+    published: true,
+    yard: 'Triple Marine',
+    material: 'aluminium',
+  },
+  {
+    id: 'mtb40-breedendam',
+    title: 'MTB40 Breedendam',
+    titleNl: 'MTB40 Breedendam',
+    category: 'motor',
+    status: 'realized',
+    lengthRange: '12m',
+    role: 'structural',
+    image: '/images/projects/mtb40-breedendam.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+    designer: 'Guido de Groot',
+  },
+  {
+    id: 'hanse-495',
+    title: 'Hanse 495 Oceanproof',
+    titleNl: 'Hanse 495 Oceanproof',
+    category: 'sailing',
+    status: 'realized',
+    lengthRange: '15m',
+    role: 'structural',
+    image: '/images/projects/hanse-495.jpg',
+    featured: false,
+    published: true,
+    material: 'composite',
+    propulsion: 'sail',
   },
   {
     id: 'src-1250-alu',
@@ -210,18 +279,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: 'work',
     status: 'realized',
     lengthRange: '12.5m',
+    role: 'complete',
     image: '/images/projects/sar-ribs-src-1250.jpg',
-    featured: false,
-    published: true,
-    material: 'aluminium',
-  },
-  {
-    id: 'revis',
-    title: 'Revis',
-    titleNl: 'Revis',
-    category: 'tender',
-    status: 'realized',
-    image: '/images/projects/revis.jpg',
     featured: false,
     published: true,
     material: 'aluminium',
@@ -232,6 +291,7 @@ export const portfolioItems: PortfolioItem[] = [
     titleNl: 'Braveheart Marine opbouw',
     category: 'work',
     status: 'realized',
+    role: 'structural',
     image: '/images/projects/braveheart.jpg',
     featured: false,
     published: true,
@@ -243,9 +303,11 @@ export const portfolioItems: PortfolioItem[] = [
     titleNl: 'Elektrische watertaxi',
     category: 'work',
     status: 'realized',
+    role: 'complete',
     image: '/images/projects/watertaxi-rotterdam.jpg',
     featured: false,
     published: true,
+    material: 'aluminium',
     propulsion: 'electric',
   },
 
@@ -312,47 +374,6 @@ export const portfolioItems: PortfolioItem[] = [
     image: 'https://ext.same-assets.com/1702387495/445813618.jpeg',
     featured: false,
     published: false,
-  },
-
-  // CONCEPTS
-  {
-    id: 'timeless-25',
-    title: 'Timeless 25',
-    titleNl: 'Timeless 25',
-    category: 'tender',
-    status: 'concept',
-    lengthRange: '7.5m',
-    year: '2020',
-    role: 'design',
-    image: '/images/projects/timeless-25.jpg',
-    featured: true,
-    published: true,
-  },
-  {
-    id: 'hanse-495',
-    title: 'Hanse 495 Oceanproof',
-    titleNl: 'Hanse 495 Oceanproof',
-    category: 'sailing',
-    status: 'concept',
-    lengthRange: '15m',
-    year: '2018',
-    role: 'design',
-    image: '/images/projects/hanse-495.jpg',
-    featured: false,
-    published: true,
-  },
-  {
-    id: 'mtb40-breedendam',
-    title: 'MTB40 Breedendam',
-    titleNl: 'MTB40 Breedendam',
-    category: 'motor',
-    status: 'concept',
-    lengthRange: '12m',
-    year: '2018',
-    role: 'design',
-    image: '/images/projects/mtb40-breedendam.jpg',
-    featured: false,
-    published: true,
   },
 ];
 
@@ -465,6 +486,11 @@ export const propulsionLabels = {
   },
 };
 
+export const designerCredit = {
+  en: 'Design by',
+  nl: 'Ontwerp van',
+};
+
 type PortfolioLocale = 'en' | 'nl';
 
 // '7.60m' becomes '7,60 m' in Dutch and '7.60 m' in English.
@@ -488,4 +514,9 @@ export function projectMeta(item: PortfolioItem, locale: PortfolioLocale) {
 
 export function projectTitle(item: PortfolioItem, locale: PortfolioLocale) {
   return locale === 'nl' && item.titleNl ? item.titleNl : item.title;
+}
+
+// Cover plus eventuele extra foto's, in de volgorde waarin de carousel ze toont.
+export function projectGallery(item: PortfolioItem) {
+  return [item.image, ...(item.images ?? [])];
 }

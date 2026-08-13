@@ -39,7 +39,7 @@ export const translations = {
         {
           label: 'Eagle 25 TS',
           lines: ['Hiswa Boat of the Year 2025', 'Electric Boat category'],
-          credit: 'designed for Eagle Yachts',
+          credit: 'designed for Eagle Boats',
         },
         {
           label: 'Cooper 680',
@@ -188,7 +188,7 @@ export const translations = {
     portfolio: {
       title: 'Built and afloat',
       subtitle: 'Portfolio',
-      intro: 'Projects that are actually sailing, with the yard that built them. Below them, a number of concepts waiting for the right owner.',
+      intro: 'Projects that are actually sailing, with the yard that built them and the role Flamme had in each.',
 
       filterAll: 'All',
       filterMotor: 'Motor Yachts',
@@ -283,7 +283,7 @@ export const translations = {
         {
           label: 'Eagle 25 TS',
           lines: ['Hiswa Boot van het Jaar 2025', 'categorie Elektroboot'],
-          credit: 'ontwerp voor Eagle Yachts',
+          credit: 'ontwerp voor Eagle Boats',
         },
         {
           label: 'Cooper 680',
@@ -433,7 +433,7 @@ export const translations = {
     portfolio: {
       title: 'Gebouwd en te water',
       subtitle: 'Portfolio',
-      intro: 'Hieronder projecten die daadwerkelijk varen, met de werf erbij die ze heeft gebouwd. Daaronder een aantal concepten die wachten op de juiste opdrachtgever.',
+      intro: 'Hieronder projecten die daadwerkelijk varen, met de werf erbij die ze heeft gebouwd en de rol die Flamme erin had.',
 
       filterAll: 'Alle',
       filterMotor: 'Motorjachten',
