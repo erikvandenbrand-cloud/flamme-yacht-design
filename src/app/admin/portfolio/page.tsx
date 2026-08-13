@@ -85,9 +85,9 @@ export default function PortfolioAdminPage() {
       titleNl: item.titleNl || '',
       category: item.category,
       status: item.status,
-      lengthRange: item.lengthRange,
+      lengthRange: item.lengthRange || '',
       year: item.year || '',
-      role: item.role,
+      role: item.role || 'design',
       image: item.image,
       featured: item.featured || false,
       published: item.published,
@@ -411,7 +411,13 @@ export default function PortfolioAdminPage() {
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      {categoryLabels.en[item.category]} · {item.lengthRange} · {roleLabels.en[item.role]}
+                      {[
+                        categoryLabels.en[item.category],
+                        item.lengthRange,
+                        item.role ? roleLabels.en[item.role] : undefined,
+                      ]
+                        .filter(Boolean)
+                        .join(' · ')}
                     </p>
                   </div>
 

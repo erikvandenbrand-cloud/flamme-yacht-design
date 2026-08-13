@@ -4,9 +4,11 @@ export interface PortfolioItem {
   titleNl?: string;
   category: 'motor' | 'sailing' | 'tender' | 'work';
   status: 'realized' | 'concept';
-  lengthRange: string;
+  // Lengte en rol zijn optioneel: van een deel van de oudere projecten is dat
+  // niet vastgelegd. Liever een regel die wegvalt dan een verzonnen getal.
+  lengthRange?: string;
   year?: string;
-  role: 'design' | 'naval' | 'structural' | 'complete';
+  role?: 'design' | 'naval' | 'structural' | 'complete';
   image: string;
   featured?: boolean;
   published: boolean;
@@ -22,9 +24,12 @@ export interface PortfolioItem {
 export const portfolioItems: PortfolioItem[] = [
   // REALIZED PROJECTS
   {
-    id: 'eagle-25-st',
-    title: 'Eagle 25 ST',
-    titleNl: 'Eagle 25 ST',
+    // TS, niet ST: de werf voert de hele reeks als 25TS, 28TS en 32TS, en
+    // Flamme zelf schrijft het ook zo. Alleen de prijswinnaarspagina hanteert
+    // ST, en spreekt zichzelf daar tegen met TS25E.
+    id: 'eagle-25-ts',
+    title: 'Eagle 25 TS',
+    titleNl: 'Eagle 25 TS',
     category: 'tender',
     status: 'realized',
     lengthRange: '7.60m',
@@ -155,6 +160,95 @@ export const portfolioItems: PortfolioItem[] = [
     featured: false,
     published: true,
   },
+  // Orizzonte II staat op flamme-yachtdesign.com als Proefvaart Orizzonte II
+  // 30m, met een foto van het afgebouwde schip. Een proefvaart doe je niet met
+  // een concept, dus dit is een gerealiseerd project en geen ontwerpstudie.
+  {
+    id: 'orizzonte-ii-30m',
+    title: 'Orizzonte II',
+    titleNl: 'Orizzonte II',
+    category: 'motor',
+    status: 'realized',
+    lengthRange: '30m',
+    year: '2020',
+    role: 'design',
+    image: '/images/projects/orizzonte-ii.jpg',
+    featured: true,
+    published: true,
+  },
+
+  // Projecten van flamme-yachtdesign.com die in de export ontbraken. Van deze
+  // zes is alleen naam en beeld bekend; jaartal en rol ontbreken nog. De
+  // lengtes hieronder komen uit het typenummer, zoals overal in dit portfolio
+  // (Cooper 680 is 6,8 m). Waar het typenummer niets zegt, blijft lengte leeg.
+  {
+    id: 'cooper-800',
+    title: 'Cooper 800',
+    titleNl: 'Cooper 800',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '8m',
+    image: '/images/projects/cooper-800.jpg',
+    featured: false,
+    published: true,
+  },
+  {
+    id: 'lxry-900',
+    title: 'LXRY 900',
+    titleNl: 'LXRY 900',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '9m',
+    image: '/images/projects/lxry-900.jpg',
+    featured: false,
+    published: true,
+  },
+  {
+    id: 'src-1250-alu',
+    title: 'SRC 1250 ALU',
+    titleNl: 'SRC 1250 ALU',
+    category: 'work',
+    status: 'realized',
+    lengthRange: '12.5m',
+    image: '/images/projects/sar-ribs-src-1250.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+  },
+  {
+    id: 'revis',
+    title: 'Revis',
+    titleNl: 'Revis',
+    category: 'tender',
+    status: 'realized',
+    image: '/images/projects/revis.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+  },
+  {
+    id: 'braveheart-opbouw',
+    title: 'Braveheart Marine superstructure',
+    titleNl: 'Braveheart Marine opbouw',
+    category: 'work',
+    status: 'realized',
+    image: '/images/projects/braveheart.jpg',
+    featured: false,
+    published: true,
+    material: 'aluminium',
+  },
+  {
+    id: 'watertaxi-rotterdam',
+    title: 'Electric water taxi',
+    titleNl: 'Elektrische watertaxi',
+    category: 'work',
+    status: 'realized',
+    image: '/images/projects/watertaxi-rotterdam.jpg',
+    featured: false,
+    published: true,
+    propulsion: 'electric',
+  },
+
   // ------------------------------------------------------------------
   // NIET GEPUBLICEERD - herkomst onbevestigd
   //
@@ -221,19 +315,6 @@ export const portfolioItems: PortfolioItem[] = [
   },
 
   // CONCEPTS
-  {
-    id: 'orizzonte-ii-30m',
-    title: 'Orizzonte II',
-    titleNl: 'Orizzonte II',
-    category: 'motor',
-    status: 'concept',
-    lengthRange: '30m',
-    year: '2020',
-    role: 'design',
-    image: '/images/projects/orizzonte-ii.jpg',
-    featured: true,
-    published: true,
-  },
   {
     id: 'timeless-25',
     title: 'Timeless 25',
@@ -396,7 +477,7 @@ export function formatLength(lengthRange: string, locale: PortfolioLocale) {
 // rather than showing up empty.
 export function projectMeta(item: PortfolioItem, locale: PortfolioLocale) {
   return [
-    formatLength(item.lengthRange, locale),
+    item.lengthRange ? formatLength(item.lengthRange, locale) : undefined,
     item.material ? materialLabels[locale][item.material] : undefined,
     item.propulsion ? propulsionLabels[locale][item.propulsion] : undefined,
     item.yard,

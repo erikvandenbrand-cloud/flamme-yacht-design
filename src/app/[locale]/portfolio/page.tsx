@@ -123,9 +123,11 @@ export default function PortfolioPage({ params }: PageProps) {
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {projectMeta(project, locale)}
                   </p>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
-                    {roleLabels[locale][project.role]}
-                  </p>
+                  {project.role && (
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {roleLabels[locale][project.role]}
+                    </p>
+                  )}
                 </div>
               </motion.article>
             ))}
@@ -176,9 +178,11 @@ export default function PortfolioPage({ params }: PageProps) {
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {projectMeta(project, locale)}
                   </p>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
-                    {roleLabels[locale][project.role]}
-                  </p>
+                  {project.role && (
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {roleLabels[locale][project.role]}
+                    </p>
+                  )}
                 </div>
               </motion.article>
             ))}
