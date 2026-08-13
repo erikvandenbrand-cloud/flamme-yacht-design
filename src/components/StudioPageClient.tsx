@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
+import { FadeIn } from '@/components/animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { Locale } from '@/lib/translations';
 
@@ -13,20 +13,21 @@ interface StudioPageClientProps {
     studio: {
       title: string;
       subtitle: string;
+      intro: string;
       founderTitle: string;
       founderRole: string;
       founderBio: string;
       founderBio2: string;
-      philosophyTitle: string;
-      philosophyText: string;
-      philosophyText2: string;
-      valuesTitle: string;
-      values: { title: string; text: string }[];
-      experienceTitle: string;
-      experienceText: string;
     };
   };
 }
+
+const projectImages = [
+  'https://ext.same-assets.com/1702387495/4192207021.jpeg',
+  'https://ext.same-assets.com/1702387495/107137140.jpeg',
+  'https://ext.same-assets.com/1702387495/1823381250.jpeg',
+  'https://ext.same-assets.com/1702387495/33237816.jpeg',
+];
 
 export function StudioPageClient({ locale, t }: StudioPageClientProps) {
   const { scrollYProgress } = useScroll();
@@ -75,9 +76,7 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-lg font-light text-white/70 md:text-xl max-w-xl"
             >
-              {locale === 'en'
-                ? 'A professional yacht design studio with decades of experience in creating vessels that are as buildable as they are beautiful.'
-                : 'Een professioneel jachtontwerpbureau met decennia aan ervaring in het creëren van vaartuigen die zo bouwbaar als mooi zijn.'}
+              {t.studio.intro}
             </motion.p>
           </div>
         </motion.div>
@@ -90,11 +89,13 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
       <section className="py-24 md:py-32 lg:py-40 bg-background">
         <div className="container-wide">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Still a project photo, not Herbert — so it stays decorative until
+                we have an actual portrait. */}
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <img
                   src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
-                  alt={t.studio.founderTitle}
+                  alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -115,87 +116,25 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-24 md:py-32 lg:py-40 bg-slate-50">
-        <div className="container-narrow">
-          <FadeIn className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-8 text-3xl font-extralight tracking-tight md:text-4xl">{t.studio.philosophyTitle}</h2>
-            <p className="mb-6 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-              {t.studio.philosophyText}
-            </p>
-            <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-              {t.studio.philosophyText2}
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-24 md:py-32 lg:py-40 bg-background">
+      {/* Project images, without claims attached to them */}
+      <section className="bg-slate-50 py-16 md:py-24">
         <div className="container-wide">
-          <FadeIn className="mb-16 text-center">
-            <h2 className="text-3xl font-extralight tracking-tight md:text-4xl">{t.studio.valuesTitle}</h2>
+          <FadeIn>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {projectImages.map((src) => (
+                <div
+                  key={src}
+                  className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg"
+                >
+                  <img
+                    src={src}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
           </FadeIn>
-
-          <StaggerChildren className="grid gap-8 md:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
-            {t.studio.values.map((value, index) => (
-              <StaggerItem key={index}>
-                <div className="card-elevated group text-center h-full">
-                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-2xl font-light text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                    {index + 1}
-                  </div>
-                  <h3 className="mb-4 text-lg font-medium">{value.title}</h3>
-                  <p className="text-sm font-light text-muted-foreground">{value.text}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="py-24 md:py-32 lg:py-40 bg-slate-50">
-        <div className="container-wide">
-          <div className="grid gap-12 lg:grid-cols-2">
-            <FadeIn direction="left">
-              <h2 className="mb-6 text-3xl font-extralight tracking-tight md:text-4xl">{t.studio.experienceTitle}</h2>
-              <p className="text-base font-light leading-relaxed text-muted-foreground md:text-lg">
-                {t.studio.experienceText}
-              </p>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg">
-                  <img
-                    src="https://ext.same-assets.com/1702387495/4192207021.jpeg"
-                    alt="Project"
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg">
-                  <img
-                    src="https://ext.same-assets.com/1702387495/107137140.jpeg"
-                    alt="Project"
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg">
-                  <img
-                    src="https://ext.same-assets.com/1702387495/1823381250.jpeg"
-                    alt="Project"
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg">
-                  <img
-                    src="https://ext.same-assets.com/1702387495/33237816.jpeg"
-                    alt="Project"
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </section>
 

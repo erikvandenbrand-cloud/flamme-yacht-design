@@ -87,40 +87,14 @@ export const translations = {
 
     // Studio page
     studio: {
-      title: 'Studio',
-      subtitle: 'About Flamme Yacht Design',
+      title: 'Independent thinking. Personal involvement.',
+      subtitle: 'Studio',
+      intro: 'Founded in 2006 by naval architect Herbert van den Brand.',
 
       founderTitle: 'Herbert van den Brand',
-      founderRole: 'Founder & Lead Designer',
-      founderBio: 'Herbert van den Brand founded Flamme Yacht Design in 2006 after gaining extensive experience at Royal Huisman, one of the world\'s most prestigious yacht builders. His background combines a deep appreciation for classic maritime craftsmanship with modern engineering practices.',
-      founderBio2: 'With decades of experience in yacht design, naval architecture, and structural engineering, Herbert brings a practical, buildability-focused approach to every project. This means designs that not only look exceptional but are engineered for efficient construction.',
-
-      philosophyTitle: 'Our Philosophy',
-      philosophyText: 'We believe that great yacht design emerges from the balance between aesthetics and engineering. Every line we draw considers both visual harmony and practical construction. Our role is to translate your vision into a vessel that performs as beautifully as it looks.',
-      philosophyText2: 'We work closely with shipyards and builders throughout the design process, ensuring that our drawings translate seamlessly into reality. This collaborative approach has built lasting partnerships across the European yachting industry.',
-
-      valuesTitle: 'Our Values',
-      values: [
-        {
-          title: 'Craftsmanship',
-          text: 'Every design reflects meticulous attention to proportion, detail, and maritime tradition.',
-        },
-        {
-          title: 'Buildability',
-          text: 'We design with construction in mind, creating practical solutions that shipyards can execute efficiently.',
-        },
-        {
-          title: 'Collaboration',
-          text: 'We work as partners with yards and clients, maintaining open communication throughout the process.',
-        },
-        {
-          title: 'Integrity',
-          text: 'Honest advice, realistic timelines, and transparent communication guide every project.',
-        },
-      ],
-
-      experienceTitle: 'Experience',
-      experienceText: 'Since 2006, Flamme Yacht Design has delivered designs for shipyards, yacht builders, and private clients across Europe. Our portfolio includes motor yachts, sailing yachts, tenders, workboats, and specialized vessels from 5 to 25 meters.',
+      founderRole: 'Naval architect and founder',
+      founderBio: 'Flamme Yacht Design was founded and is led by naval architect Herbert van den Brand. After years in the Dutch yacht-building industry, including Royal Huisman, he started the studio in 2006.',
+      founderBio2: 'Since then Flamme has worked on motor yachts, sailing yachts, tenders, workboats and a range of custom projects. What defines the studio is the direct link between design and engineering: from the first conversation to the technical work, Herbert stays involved himself. No handover between a design team and an engineering team, but one continuous line.',
     },
 
     // Services page
@@ -327,40 +301,14 @@ export const translations = {
 
     // Studio page
     studio: {
-      title: 'Studio',
-      subtitle: 'Over Flamme Yacht Design',
+      title: 'Onafhankelijk ontwerp. Persoonlijk betrokken.',
+      subtitle: 'Studio',
+      intro: 'Opgericht in 2006 door scheepsarchitect Herbert van den Brand.',
 
       founderTitle: 'Herbert van den Brand',
-      founderRole: 'Oprichter & Hoofdontwerper',
-      founderBio: 'Herbert van den Brand richtte Flamme Yacht Design op in 2006, na jarenlange ervaring bij Royal Huisman — een van de meest prestigieuze jachtbouwers ter wereld. Zijn achtergrond verenigt diep respect voor klassiek maritiem vakmanschap met hedendaagse engineering.',
-      founderBio2: 'Met decennia aan ervaring in jachtontwerp, scheepsarchitectuur en constructie-engineering brengt Herbert een pragmatische, bouwgerichte visie naar elk project. Het resultaat: ontwerpen die niet alleen esthetisch uitmunten, maar ook efficiënt te realiseren zijn.',
-
-      philosophyTitle: 'Onze Filosofie',
-      philosophyText: 'Wij geloven dat excellent jachtontwerp ontstaat uit de balans tussen esthetiek en techniek. Elke lijn die wij tekenen houdt rekening met zowel visuele harmonie als praktische uitvoerbaarheid. Onze rol is uw visie te vertalen naar een vaartuig dat even mooi presteert als het oogt.',
-      philosophyText2: 'Wij werken nauw samen met werven en bouwers gedurende het gehele ontwerptraject, zodat onze tekeningen naadloos vertalen naar werkelijkheid. Deze samenwerkingsgerichte aanpak heeft geleid tot langdurige partnerschappen in de Europese jachtbouwindustrie.',
-
-      valuesTitle: 'Onze Waarden',
-      values: [
-        {
-          title: 'Vakmanschap',
-          text: 'Elk ontwerp getuigt van zorgvuldige aandacht voor proportie, detail en maritieme traditie.',
-        },
-        {
-          title: 'Bouwbaarheid',
-          text: 'Wij ontwerpen met de productie in gedachten — praktische oplossingen die werven efficiënt kunnen uitvoeren.',
-        },
-        {
-          title: 'Samenwerking',
-          text: 'Wij opereren als partner van werven en opdrachtgevers, met open communicatie gedurende het gehele traject.',
-        },
-        {
-          title: 'Integriteit',
-          text: 'Eerlijk advies, realistische planning en transparante communicatie vormen de basis van elk project.',
-        },
-      ],
-
-      experienceTitle: 'Ervaring',
-      experienceText: 'Sinds 2006 levert Flamme Yacht Design ontwerpen voor werven, jachtbouwers en particuliere opdrachtgevers in heel Europa. Ons portfolio omvat motorjachten, zeiljachten, tenders, werkschepen en specialistische vaartuigen van 5 tot 25 meter.',
+      founderRole: 'Scheepsarchitect en oprichter',
+      founderBio: 'Flamme Yacht Design is opgericht en wordt geleid door scheepsarchitect Herbert van den Brand. Na jaren in de Nederlandse jachtbouw, onder andere bij Royal Huisman, startte hij het bureau in 2006.',
+      founderBio2: 'Sindsdien werkte Flamme aan motorjachten, zeiljachten, tenders, werkschepen en uiteenlopende custom projecten. Kenmerkend is de directe verbinding tussen ontwerp en techniek: van eerste gesprek tot technische uitwerking blijft Herbert zelf betrokken. Geen overdracht tussen een ontwerpteam en een engineeringteam, maar één doorlopende lijn.',
     },
 
     // Services page

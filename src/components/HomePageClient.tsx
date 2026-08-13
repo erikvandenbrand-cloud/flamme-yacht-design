@@ -271,7 +271,7 @@ export function HomePageClient({
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <img
                   src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
-                  alt={t.studio.founderTitle}
+                  alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -291,7 +291,7 @@ export function HomePageClient({
               </p>
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-lg font-semibold text-primary">JF</span>
+                  <span className="text-lg font-semibold text-primary">HB</span>
                 </div>
                 <div>
                   <p className="font-medium text-foreground">{t.studio.founderTitle}</p>
