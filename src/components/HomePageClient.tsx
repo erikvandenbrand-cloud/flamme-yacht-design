@@ -1,0 +1,556 @@
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
+import { ArrowRight, Compass, Anchor, Ruler, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { FadeIn } from '@/components/animations';
+import type { PortfolioItem } from '@/lib/portfolio';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+
+interface HomePageClientProps {
+  locale: 'en' | 'nl';
+  t: {
+    home: {
+      heroTitle: string;
+      heroSubtitle: string;
+      heroTagline: string;
+      heroCta: string;
+      heroCtaSecondary: string;
+      introTitle: string;
+      introText: string;
+      introLink: string;
+      servicesTitle: string;
+      servicesSubtitle: string;
+      portfolioTitle: string;
+      portfolioSubtitle: string;
+      portfolioLink: string;
+      ctaTitle: string;
+      ctaText: string;
+      ctaCta: string;
+    };
+    studio: {
+      title: string;
+      subtitle: string;
+      founderTitle: string;
+      founderRole: string;
+      founderBio: string;
+      founderBio2: string;
+    };
+    contact: {
+      title: string;
+      subtitle: string;
+      intro: string;
+      formName: string;
+      formEmail: string;
+      formSubject: string;
+      formMessage: string;
+      formSubmit: string;
+      formSuccess: string;
+      subjectOptions: string[];
+      emailTitle: string;
+      email: string;
+      phoneTitle: string;
+      phone: string;
+      addressTitle: string;
+      address: string;
+    };
+  };
+  featuredProjects: PortfolioItem[];
+  allProjects: PortfolioItem[];
+  categoryLabels: Record<string, string>;
+  roleLabels: Record<string, string>;
+}
+
+export function HomePageClient({
+  locale,
+  t,
+  featuredProjects,
+  allProjects,
+  categoryLabels,
+  roleLabels,
+}: HomePageClientProps) {
+  const { scrollYProgress } = useScroll();
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.1], [1, 1.1]);
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  // Get projects for display
+  const displayProjects = allProjects.slice(0, 8);
+
+  // Playful grid layout
+  const getGridClass = (index: number) => {
+    if (index === 0) return 'col-span-2 row-span-2';
+    return '';
+  };
+
+  const getAspectClass = (index: number) => {
+    if (index === 0) return 'aspect-[4/3] md:aspect-square';
+    return 'aspect-[4/3]';
+  };
+
+  return (
+    <>
+      {/* HERO SECTION */}
+      <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            poster="https://images.pexels.com/videos/1918465/free-video-1918465.jpg?auto=compress&cs=tinysrgb&w=1920"
+          >
+            <source
+              src="https://videos.pexels.com/video-files/1918465/1918465-hd_1920_1080_24fps.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-slate-900/80" />
+        </motion.div>
+
+        <motion.div
+          className="container-wide relative z-10 pt-24"
+          style={{ opacity: heroOpacity }}
+        >
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8 text-xs font-semibold uppercase tracking-[0.35em] text-white/70"
+            >
+              {t.home.heroSubtitle}
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-8 text-5xl font-light tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl"
+            >
+              {t.home.heroTitle}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mb-12 max-w-lg text-base leading-relaxed text-white/70 md:text-lg"
+            >
+              {t.home.heroTagline}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap gap-5"
+            >
+              <a href="#portfolio" className="btn-primary">
+                {t.home.heroCta}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a href="#studio" className="btn-outline">
+                {t.home.heroCtaSecondary}
+              </a>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="absolute bottom-16 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+            className="h-12 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent"
+          />
+        </motion.div>
+      </section>
+
+      {/* STUDIO SECTION */}
+      <section id="studio" className="py-24 md:py-32 lg:py-40 bg-white scroll-mt-20">
+        <div className="container-wide">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <FadeIn direction="left">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
+                <img
+                  src="https://ext.same-assets.com/1702387495/2228340057.jpeg"
+                  alt={t.studio.founderTitle}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.2} className="flex flex-col justify-center">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+                {t.studio.subtitle}
+              </p>
+              <h2 className="mb-6 text-3xl font-light tracking-tight md:text-4xl lg:text-5xl">
+                {t.studio.title}
+              </h2>
+              <p className="mb-4 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+                {t.studio.founderBio}
+              </p>
+              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground md:text-lg">
+                {t.studio.founderBio2}
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-lg font-semibold text-primary">JF</span>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">{t.studio.founderTitle}</p>
+                  <p className="text-sm text-muted-foreground">{t.studio.founderRole}</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section id="services" className="py-24 md:py-32 lg:py-40 bg-slate-50 scroll-mt-20">
+        <div className="container-wide">
+          <FadeIn className="mb-16 text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              {t.home.servicesSubtitle}
+            </p>
+            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+              {t.home.servicesTitle}
+            </h2>
+          </FadeIn>
+
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+            {/* Yacht Design */}
+            <FadeIn delay={0}>
+              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600" />
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 border border-teal-100 transition-all group-hover:bg-teal-100 group-hover:scale-110">
+                  <Compass className="h-7 w-7 text-teal-600" />
+                </div>
+                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
+                  {locale === 'en' ? 'Yacht Design' : 'Jachtontwerp'}
+                </h3>
+                <p className="text-sm leading-relaxed text-foreground/60">
+                  {locale === 'en'
+                    ? 'From concept sketches to refined exterior styling. Creating distinctive designs that capture your vision and stand out on the water.'
+                    : 'Van conceptschetsen tot verfijnd exterieurontwerp. Onderscheidende ontwerpen die uw visie vastleggen en opvallen op het water.'}
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Naval Architecture */}
+            <FadeIn delay={0.15}>
+              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-blue-300 hover:-translate-y-1">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600" />
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 transition-all group-hover:bg-blue-100 group-hover:scale-110">
+                  <Anchor className="h-7 w-7 text-blue-600" />
+                </div>
+                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
+                  {locale === 'en' ? 'Naval Architecture' : 'Scheepsarchitectuur'}
+                </h3>
+                <p className="text-sm leading-relaxed text-foreground/60">
+                  {locale === 'en'
+                    ? 'Hull form development, stability calculations, and performance optimization for vessels that perform beautifully in all conditions.'
+                    : 'Rompvorm-ontwikkeling, stabiliteitsberekeningen en prestatie-optimalisatie voor vaartuigen die optimaal presteren in alle omstandigheden.'}
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Structural Engineering */}
+            <FadeIn delay={0.3}>
+              <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-xl hover:border-amber-300 hover:-translate-y-1">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-600" />
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 border border-amber-100 transition-all group-hover:bg-amber-100 group-hover:scale-110">
+                  <Ruler className="h-7 w-7 text-amber-600" />
+                </div>
+                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
+                  {locale === 'en' ? 'Structural Engineering' : 'Constructie-Engineering'}
+                </h3>
+                <p className="text-sm leading-relaxed text-foreground/60">
+                  {locale === 'en'
+                    ? 'Detailed construction drawings and specifications that enable efficient production and ensure structural integrity for years to come.'
+                    : 'Gedetailleerde bouwtekeningen en specificaties voor efficiënte productie en structurele integriteit voor de komende jaren.'}
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* PORTFOLIO SECTION */}
+      <section id="portfolio" className="py-24 md:py-32 lg:py-40 bg-white scroll-mt-20">
+        <div className="container-wide">
+          <FadeIn className="mb-12 text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              {t.home.portfolioSubtitle}
+            </p>
+            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+              {t.home.portfolioTitle}
+            </h2>
+          </FadeIn>
+
+          {/* Playful Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {displayProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className={`relative overflow-hidden rounded-xl cursor-pointer group ${getGridClass(index)}`}
+              >
+                <div className={`relative ${getAspectClass(index)} overflow-hidden`}>
+                  <img
+                    src={project.image}
+                    alt={locale === 'nl' && project.titleNl ? project.titleNl : project.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className={`absolute top-3 left-3 z-20 rounded-lg px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg ${
+                    project.status === 'realized' ? 'bg-emerald-500' : 'bg-amber-500'
+                  }`}>
+                    {project.status === 'realized'
+                      ? (locale === 'en' ? 'Built' : 'Gebouwd')
+                      : 'Concept'
+                    }
+                  </div>
+
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-4 md:p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <p className="text-[10px] font-medium uppercase tracking-wider text-white/70 mb-1">
+                      {categoryLabels[project.category]} · {project.lengthRange}
+                    </p>
+                    <h3 className="text-base md:text-lg font-medium text-white leading-tight">
+                      {locale === 'nl' && project.titleNl ? project.titleNl : project.title}
+                    </h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-slate-50 scroll-mt-20">
+        <div className="container-wide">
+          <FadeIn className="mb-16 text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              {t.contact.subtitle}
+            </p>
+            <h2 className="text-3xl font-light tracking-tight text-foreground md:text-4xl lg:text-5xl">
+              {t.contact.title}
+            </h2>
+            <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+              {t.contact.intro}
+            </p>
+          </FadeIn>
+
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Contact Form */}
+            <FadeIn direction="left">
+              <div className="rounded-2xl bg-white p-8 shadow-lg border border-slate-200">
+                {isSubmitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-12 text-center"
+                  >
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                      <Check className="h-8 w-8 text-primary" />
+                    </div>
+                    <p className="text-lg text-foreground">
+                      {t.contact.formSuccess}
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-sm font-medium">{t.contact.formName}</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        required
+                        className="h-12 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-sm font-medium">{t.contact.formEmail}</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        className="h-12 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="subject" className="text-sm font-medium">{t.contact.formSubject}</Label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        required
+                        className="flex h-12 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm focus:border-primary focus:ring-primary"
+                      >
+                        <option value="">
+                          {locale === 'en' ? 'Select a subject' : 'Selecteer een onderwerp'}
+                        </option>
+                        {t.contact.subjectOptions.map((option, index) => (
+                          <option key={index} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-sm font-medium">{t.contact.formMessage}</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={5}
+                        className="resize-none rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="h-12 w-full rounded-lg bg-primary text-white hover:bg-primary/90"
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center gap-2">
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                          {locale === 'en' ? 'Sending...' : 'Verzenden...'}
+                        </span>
+                      ) : (
+                        <>
+                          {t.contact.formSubmit}
+                          <Send className="ml-2 h-4 w-4" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </FadeIn>
+
+            {/* Contact Info */}
+            <FadeIn direction="right" delay={0.2}>
+              <div className="space-y-6">
+                <div className="rounded-2xl bg-white p-6 shadow-sm border border-slate-200 group hover:shadow-lg transition-shadow">
+                  <div className="flex items-start gap-5">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
+                      <Mail className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-base font-medium">{t.contact.emailTitle}</h3>
+                      <a
+                        href={`mailto:${t.contact.email}`}
+                        className="text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        {t.contact.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-white p-6 shadow-sm border border-slate-200 group hover:shadow-lg transition-shadow">
+                  <div className="flex items-start gap-5">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
+                      <Phone className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-base font-medium">{t.contact.phoneTitle}</h3>
+                      <a
+                        href={`tel:${t.contact.phone.replace(/\s/g, '')}`}
+                        className="text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        {t.contact.phone}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-white p-6 shadow-sm border border-slate-200 group hover:shadow-lg transition-shadow">
+                  <div className="flex items-start gap-5">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-base font-medium">{t.contact.addressTitle}</h3>
+                      <p className="whitespace-pre-line text-muted-foreground">
+                        {t.contact.address}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Map */}
+                <div className="aspect-video overflow-hidden rounded-2xl bg-muted shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.6775693954145!2d5.836194376908!3d52.44294994069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7e2a3c3c3c3c3%3A0x0!2sIndustriestraat%2025%2C%208081%20HH%20Elburg!5e0!3m2!1sen!2snl!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Location"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 bg-slate-900">
+        <div className="container-narrow text-center">
+          <FadeIn>
+            <h2 className="mb-6 text-3xl font-light tracking-tight text-white md:text-4xl lg:text-5xl">
+              {t.home.ctaTitle}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/60 md:text-lg">
+              {t.home.ctaText}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.4}>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 rounded-lg bg-primary px-8 py-4 text-sm font-medium uppercase tracking-[0.15em] text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+            >
+              {t.home.ctaCta}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+    </>
+  );
+}
