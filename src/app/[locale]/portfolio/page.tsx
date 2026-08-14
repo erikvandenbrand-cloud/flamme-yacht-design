@@ -7,6 +7,7 @@ import {
   type PortfolioItem,
   getRealizedProjects,
   getConceptProjects,
+  getBuildingProjects,
   statusLabels,
 } from '@/lib/portfolio';
 import { FadeIn } from '@/components/animations';
@@ -36,6 +37,7 @@ export default function PortfolioPage({ params }: PageProps) {
     filter === 'all' ? items : items.filter((item) => item.category === filter);
 
   const realizedProjects = applyFilter(getRealizedProjects());
+  const buildingProjects = applyFilter(getBuildingProjects());
   const conceptProjects = applyFilter(getConceptProjects());
 
   const { scrollYProgress } = useScroll();
@@ -146,9 +148,38 @@ export default function PortfolioPage({ params }: PageProps) {
       </section>
       )}
 
+      {/* Under construction */}
+      {buildingProjects.length > 0 && (
+      <section id="building" className="scroll-mt-20 bg-slate-50 py-16 md:py-24">
+        <div className="container-wide">
+          <FadeIn className="mb-12">
+            <div className="flex items-baseline gap-4 border-b border-border/50 pb-4">
+              <h2 className="text-2xl tracking-tight text-foreground md:text-3xl">
+                {statusLabels[locale].building}
+              </h2>
+              <span className="text-sm text-muted-foreground">
+                {buildingProjects.length}
+              </span>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+            {buildingProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                locale={locale}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      )}
+
       {/* Concepts */}
       {conceptProjects.length > 0 && (
-      <section id="concepts" className="scroll-mt-20 bg-slate-50 py-16 md:py-24">
+      <section id="concepts" className="scroll-mt-20 bg-white py-16 md:py-24">
         <div className="container-wide">
           <FadeIn className="mb-12">
             <div className="flex items-baseline gap-4 border-b border-border/50 pb-4">

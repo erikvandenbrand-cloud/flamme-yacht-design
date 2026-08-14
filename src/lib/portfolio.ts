@@ -3,7 +3,9 @@ export interface PortfolioItem {
   title: string;
   titleNl?: string;
   category: 'motor' | 'sailing' | 'tender' | 'work';
-  status: 'realized' | 'concept';
+  // 'building' voor schepen die nu op de werf liggen. Zonder die derde stand
+  // zou zo'n schip als gebouwd of als concept getoond worden, en beide is fout.
+  status: 'realized' | 'concept' | 'building';
   // Lengte, jaar en rol zijn optioneel: van een deel van de projecten is dat
   // niet vastgelegd. Liever een regel die wegvalt dan een verzonnen getal.
   lengthRange?: string;
@@ -564,14 +566,57 @@ export const portfolioItems: PortfolioItem[] = [
     yard: 'Ribbon Yachts',
   },
 
+  {
+    // Flevo Jachtbouw noemt Herbert hier bij naam als ontwerper. Dat is de enige
+    // externe site die dat doet. Het schip ligt nog op de werf, vandaar
+    // status 'building' en niet 'realized'.
+    id: 'lynx-mv10',
+    title: 'Lynx MV-10',
+    titleNl: 'Lynx MV-10',
+    category: 'tender',
+    status: 'building',
+    role: 'complete',
+    image: '/images/projects/lynx-mv10-1.jpg',
+    images: [
+      '/images/projects/lynx-mv10-2.jpg',
+      '/images/projects/lynx-mv10-3.jpg',
+      '/images/projects/lynx-mv10-4.jpg',
+      '/images/projects/lynx-mv10-5.jpg',
+      '/images/projects/lynx-mv10-6.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Flevo Jachtbouw',
+  },
+  {
+    // Onder engineering, zoals Erik het aanleverde. Let op de schrijfwijze met
+    // de Deense O: het merk is vernoemd naar Ørsted.
+    id: 'davy-orsted-750',
+    title: 'Davy & Ørsted 750',
+    titleNl: 'Davy & Ørsted 750',
+    category: 'tender',
+    status: 'realized',
+    // 8,00 m volgens de werf. Ook hier zegt het typenummer niets over de lengte.
+    lengthRange: '8m',
+    role: 'structural',
+    image: '/images/projects/davy-orsted-750-1.jpg',
+    images: [
+      '/images/projects/davy-orsted-750-2.jpg',
+      '/images/projects/davy-orsted-750-3.jpg',
+      '/images/projects/davy-orsted-750-4.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Davy & Ørsted',
+    material: 'aluminium',
+    propulsion: 'diesel',
+  },
+
   // ------------------------------------------------------------------
   // NOG TOE TE VOEGEN - geen bron gevonden
   //
-  // Lynx MV10, Alumax RJ34, Alumax DVV850 en Davy & Orsted 750. Van deze vier
-  // is niets te vinden via de werf. Een link of de foto's zelf zijn genoeg om
-  // ze toe te voegen; de rest van de gegevens volgt dan uit de bron.
-  // Davy & Orsted 750 hoort volgens Erik onder engineering, dus role wordt
-  // daar 'structural' en niet 'complete'.
+  // Alumax RJ34 en Alumax DVV850. Staan niet op alumaxboats.nl en Erik kon ze
+  // ook niet vinden. Zonder bron geen gegevens en geen foto.
   // ------------------------------------------------------------------
 
   // ------------------------------------------------------------------
@@ -662,6 +707,8 @@ const displayOrder = [
   'alumax-rj28',
   'ay-835',
   'ribbon-45-mk2',
+  'lynx-mv10',
+  'davy-orsted-750',
 ];
 
 // Sorteren is stabiel, dus alles buiten displayOrder houdt onderling de
@@ -692,6 +739,12 @@ export function getRealizedProjects() {
 export function getConceptProjects() {
   return portfolioItems
     .filter(item => item.published && item.status === 'concept')
+    .sort(byDisplayOrder);
+}
+
+export function getBuildingProjects() {
+  return portfolioItems
+    .filter(item => item.published && item.status === 'building')
     .sort(byDisplayOrder);
 }
 
@@ -737,10 +790,12 @@ export const statusLabels = {
   en: {
     realized: 'Realized Projects',
     concept: 'Concepts',
+    building: 'Under construction',
   },
   nl: {
     realized: 'Gerealiseerde Projecten',
     concept: 'Concepten',
+    building: 'In bouw',
   },
 };
 
@@ -749,10 +804,12 @@ export const statusShortLabels = {
   en: {
     realized: 'Built',
     concept: 'Concept',
+    building: 'In build',
   },
   nl: {
     realized: 'Gebouwd',
     concept: 'Concept',
+    building: 'In bouw',
   },
 };
 
