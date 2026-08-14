@@ -1,15 +1,12 @@
 'use client';
 
-import { useState, use } from 'react';
+import { use } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { type Locale, getTranslations } from '@/lib/translations';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
+import { ContactForm } from '@/components/ContactForm';
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -18,23 +15,10 @@ interface PageProps {
 export default function ContactPage({ params }: PageProps) {
   const { locale } = use(params);
   const t = getTranslations(locale);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 1.1]);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
 
   return (
     <>
@@ -105,91 +89,7 @@ export default function ContactPage({ params }: PageProps) {
             {/* Contact Form */}
             <FadeIn direction="left">
               <div className="card-elevated !p-10">
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-12 text-center"
-                  >
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                      <Check className="h-8 w-8 text-primary" />
-                    </div>
-                    <p className="text-lg text-foreground">
-                      {t.contact.formSuccess}
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-sm font-medium">{t.contact.formName}</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        required
-                        className="h-12 rounded-xl border-border/50 bg-muted/30 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium">{t.contact.formEmail}</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        className="h-12 rounded-xl border-border/50 bg-muted/30 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm font-medium">{t.contact.formSubject}</Label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        required
-                        className="flex h-12 w-full rounded-xl border border-border/50 bg-muted/30 px-4 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      >
-                        <option value="">
-                          {locale === 'en' ? 'Select a subject' : 'Selecteer een onderwerp'}
-                        </option>
-                        {t.contact.subjectOptions.map((option, index) => (
-                          <option key={index} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-medium">{t.contact.formMessage}</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={6}
-                        className="resize-none rounded-xl border-border/50 bg-muted/30 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-primary h-14 w-full rounded-xl"
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center gap-2">
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent" />
-                          {locale === 'en' ? 'Sending...' : 'Verzenden...'}
-                        </span>
-                      ) : (
-                        <>
-                          {t.contact.formSubmit}
-                          <Send className="h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                )}
+                <ContactForm t={t.contact} />
               </div>
             </FadeIn>
 

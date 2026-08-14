@@ -4,14 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowRight, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
 import type { PortfolioItem } from '@/lib/portfolio';
 import { ProjectCard } from '@/components/ProjectCard';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
+import { ContactForm } from '@/components/ContactForm';
 
 interface HomePageClientProps {
   locale: 'en' | 'nl';
@@ -71,6 +68,9 @@ interface HomePageClientProps {
       formMessage: string;
       formSubmit: string;
       formSuccess: string;
+      formSelect: string;
+      formSending: string;
+      formError: string;
       subjectOptions: string[];
       emailTitle: string;
       email: string;
@@ -91,17 +91,6 @@ export function HomePageClient({
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.1], [1, 1.1]);
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
 
   // Negen in beeld, de rest achter een knop. Zonder die grens duwt het portfolio
   // de contactsectie ver naar beneden. Negen en niet acht, omdat het raster nu
@@ -414,91 +403,7 @@ export function HomePageClient({
             {/* Contact Form */}
             <FadeIn direction="left">
               <div className="rounded-2xl bg-white p-8 shadow-lg border border-slate-200">
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-12 text-center"
-                  >
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                      <Check className="h-8 w-8 text-primary" />
-                    </div>
-                    <p className="text-lg text-foreground">
-                      {t.contact.formSuccess}
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-sm font-medium">{t.contact.formName}</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        required
-                        className="h-12 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium">{t.contact.formEmail}</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        className="h-12 rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm font-medium">{t.contact.formSubject}</Label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        required
-                        className="flex h-12 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm focus:border-primary focus:ring-primary"
-                      >
-                        <option value="">
-                          {locale === 'en' ? 'Select a subject' : 'Selecteer een onderwerp'}
-                        </option>
-                        {t.contact.subjectOptions.map((option, index) => (
-                          <option key={index} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-medium">{t.contact.formMessage}</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={5}
-                        className="resize-none rounded-lg border-slate-200 bg-slate-50 focus:border-primary focus:ring-primary"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="h-12 w-full rounded-lg bg-primary text-white hover:bg-primary/90"
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center gap-2">
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                          {locale === 'en' ? 'Sending...' : 'Verzenden...'}
-                        </span>
-                      ) : (
-                        <>
-                          {t.contact.formSubmit}
-                          <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                )}
+                <ContactForm t={t.contact} />
               </div>
             </FadeIn>
 

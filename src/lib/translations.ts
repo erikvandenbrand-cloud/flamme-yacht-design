@@ -190,6 +190,9 @@ export const translations = {
       formMessage: 'Message',
       formSubmit: 'Send Message',
       formSuccess: 'Thank you for your message. We reply within two working days.',
+      formSelect: 'Select a subject',
+      formSending: 'Sending...',
+      formError: 'Sending failed. Please email us directly:',
 
       // A second opinion is a low threshold to cross, and often the first
       // conversation starts there.
@@ -410,6 +413,9 @@ export const translations = {
       formMessage: 'Uw bericht',
       formSubmit: 'Verstuur Bericht',
       formSuccess: 'Hartelijk dank voor uw bericht. Wij reageren binnen twee werkdagen.',
+      formSelect: 'Selecteer een onderwerp',
+      formSending: 'Verzenden...',
+      formError: 'Het versturen is niet gelukt. Mail ons gerust rechtstreeks:',
 
       // Een second opinion is een lage drempel en levert vaak het eerste
       // gesprek op.

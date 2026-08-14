@@ -14,6 +14,19 @@ Er staat lokaal geen Node/npm. Wijzigingen gaan zo:
 De Vercel-build is dus ook meteen de typecheck: `next build` faalt bij TypeScript-fouten.
 Houd commits daarom klein, zodat een mislukte build makkelijk te herleiden is.
 
+## Contactformulier
+
+Het formulier post naar `/api/contact`, en die route stuurt het door via
+Web3Forms. De sleutel staat als `WEB3FORMS_ACCESS_KEY` in de omgeving van Vercel
+en dus niet in de paginabron. Zie `.env.example`.
+
+Ontbreekt de sleutel, dan geeft de route bewust een fout en toont het formulier
+het e-mailadres. Dat is met opzet: eerder stond hier een simulatie die altijd
+een bevestiging liet zien, waardoor berichten stil verdwenen.
+
+Het formulier zelf staat in één component, `ContactForm`, gebruikt op de
+homepage en op de contactpagina.
+
 ## Structuur
 
 ```
