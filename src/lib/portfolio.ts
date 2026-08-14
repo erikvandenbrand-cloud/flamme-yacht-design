@@ -441,22 +441,137 @@ export const portfolioItems: PortfolioItem[] = [
     material: 'aluminium',
   },
 
+  {
+    id: 'eagle-28sg',
+    title: 'Eagle 28SG',
+    titleNl: 'Eagle 28SG',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '8.5m',
+    role: 'complete',
+    image: '/images/projects/eagle-28sg-1.jpg',
+    images: [
+      '/images/projects/eagle-28sg-2.jpg',
+      '/images/projects/eagle-28sg-3.jpg',
+      '/images/projects/eagle-28sg-4.jpg',
+      '/images/projects/eagle-28sg-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Eagle Boats',
+    material: 'aluminium',
+  },
+  {
+    id: 'eagle-c999',
+    title: 'Eagle C999',
+    titleNl: 'Eagle C999',
+    category: 'work',
+    status: 'realized',
+    lengthRange: '9.99m',
+    role: 'complete',
+    image: '/images/projects/eagle-c999-1.jpg',
+    images: [
+      '/images/projects/eagle-c999-2.jpg',
+      '/images/projects/eagle-c999-3.jpg',
+      '/images/projects/eagle-c999-4.jpg',
+      '/images/projects/eagle-c999-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Eagle Boats',
+    material: 'aluminium',
+    propulsion: 'electric',
+  },
+  {
+    id: 'cooper-34',
+    title: 'Cooper 34',
+    titleNl: 'Cooper 34',
+    category: 'motor',
+    status: 'realized',
+    lengthRange: '10.30m',
+    role: 'complete',
+    image: '/images/projects/cooper-34-1.jpg',
+    images: [
+      '/images/projects/cooper-34-2.jpg',
+      '/images/projects/cooper-34-3.jpg',
+      '/images/projects/cooper-34-4.jpg',
+      '/images/projects/cooper-34-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Cooperyacht',
+    propulsion: 'diesel',
+  },
+  {
+    id: 'alumax-rj28',
+    title: 'Alumax RJ 28',
+    titleNl: 'Alumax RJ 28',
+    category: 'motor',
+    status: 'realized',
+    lengthRange: '8m',
+    role: 'complete',
+    image: '/images/projects/alumax-rj28-1.jpg',
+    images: [
+      '/images/projects/alumax-rj28-2.jpg',
+      '/images/projects/alumax-rj28-3.jpg',
+      '/images/projects/alumax-rj28-4.jpg',
+      '/images/projects/alumax-rj28-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Alumax Boats',
+    material: 'aluminium',
+  },
+  {
+    id: 'ay-835',
+    title: 'Amsterdam Yachts AY-835',
+    titleNl: 'Amsterdam Yachts AY-835',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '8.35m',
+    role: 'complete',
+    image: '/images/projects/ay-835-1.jpg',
+    images: [
+      '/images/projects/ay-835-2.jpg',
+      '/images/projects/ay-835-3.jpg',
+      '/images/projects/ay-835-4.jpg',
+      '/images/projects/ay-835-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Amsterdam Yachts',
+    material: 'composite',
+  },
+  {
+    // Onder engineering, zoals Erik het aanleverde: de rompontwikkeling van de
+    // 45-voetklasse ligt bij een ander bureau.
+    id: 'ribbon-45-mk2',
+    title: 'Ribbon 45 MK2',
+    titleNl: 'Ribbon 45 MK2',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '13m',
+    role: 'structural',
+    image: '/images/projects/ribbon-45-mk2.jpg',
+    images: [
+      '/images/projects/ribbon-45-mk2-2.jpg',
+      '/images/projects/ribbon-45-mk2-3.jpg',
+      '/images/projects/ribbon-45-mk2-4.jpg',
+      '/images/projects/ribbon-45-mk2-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Ribbon Yachts',
+  },
+
   // ------------------------------------------------------------------
-  // NOG TOE TE VOEGEN - gegevens bekend, foto ontbreekt
+  // NOG TOE TE VOEGEN - geen bron gevonden
   //
-  // Deze twee staan hier als aantekening en niet als item, omdat een kaart
-  // zonder foto stuk oogt.
-  //
-  // Amsterdam Yachts AY-835: 8,35 x 2,50 m, polyester, elektrische of
-  //   conventionele buitenboordmotor. Opvolger van de AY-550. Het SSL-
-  //   certificaat van ay-yachts.com is ongeldig, dus daar was niets op te halen.
-  //
-  // Alumax RJ28: 8 x 3 m, aluminium, diesel/elektrisch/hybride, werf Alumax
-  //   Boats in Meppel. Hun site laadt de foto's via JavaScript, dus er zijn
-  //   geen directe bestandsadressen.
-  //
-  // Nog helemaal niet gevonden: Eagle C999, Cooper 34, Lynx MV10,
-  // Alumax RJ34, Alumax DVV850, Davy & Orsted 750, Ribbon 45mk2.
+  // Lynx MV10, Alumax RJ34, Alumax DVV850 en Davy & Orsted 750. Van deze vier
+  // is niets te vinden via de werf. Een link of de foto's zelf zijn genoeg om
+  // ze toe te voegen; de rest van de gegevens volgt dan uit de bron.
+  // Davy & Orsted 750 hoort volgens Erik onder engineering, dus role wordt
+  // daar 'structural' en niet 'complete'.
   // ------------------------------------------------------------------
 
   // ------------------------------------------------------------------
