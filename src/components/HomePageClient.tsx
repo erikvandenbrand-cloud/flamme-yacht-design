@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
@@ -22,7 +21,6 @@ interface HomePageClientProps {
       introTitle: string;
       introText: string;
       introText2: string;
-      introLink: string;
       statements: { title: string; text: string }[];
       audiences: {
         eyebrow: string;
@@ -32,7 +30,6 @@ interface HomePageClientProps {
       servicesSubtitle: string;
       portfolioTitle: string;
       portfolioSubtitle: string;
-      portfolioLink: string;
       portfolioMore: string;
       ctaTitle: string;
       ctaText: string;
@@ -199,13 +196,6 @@ export function HomePageClient({
               <p className="measure mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.home.introText2}
               </p>
-              <Link
-                href={`/${locale}/studio`}
-                className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-all hover:gap-3"
-              >
-                {t.home.introLink}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </FadeIn>
           </div>
 

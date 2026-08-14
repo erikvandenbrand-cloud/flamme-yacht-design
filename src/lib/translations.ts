@@ -36,7 +36,6 @@ export const translations = {
       introTitle: 'From an idea to a yacht that can actually be built.',
       introText: 'A successful yacht is more than styling alone. Proportion, performance, structure, systems and production have to work together from the first line.',
       introText2: 'Flamme Yacht Design combines yacht design, naval architecture and engineering in a single process. The same person who sets the sheer line knows how the structure underneath is built up. From tenders to 40 metres, for shipyards and private owners.',
-      introLink: 'About the studio',
 
       statements: [
         {
@@ -78,7 +77,6 @@ export const translations = {
 
       portfolioTitle: 'Built and afloat',
       portfolioSubtitle: 'Portfolio',
-      portfolioLink: 'View all projects',
       portfolioMore: 'Show more projects',
 
       ctaTitle: 'Begin Your Journey',
@@ -258,7 +256,6 @@ export const translations = {
       introTitle: 'Van idee naar een jacht dat écht gebouwd kan worden.',
       introText: 'Een goed jacht begint niet bij styling alleen. Vorm, vaareigenschappen, constructie, techniek en productie moeten vanaf de eerste lijn met elkaar kloppen.',
       introText2: 'Flamme Yacht Design combineert jachtontwerp, scheepsarchitectuur en engineering in één traject. Dezelfde ontwerper die de lijnvoering bepaalt, weet ook hoe de constructie eronder wordt opgebouwd. Van tender tot 40 meter, voor werven en particuliere opdrachtgevers.',
-      introLink: 'Over de studio',
 
       statements: [
         {
@@ -301,7 +298,6 @@ export const translations = {
 
       portfolioTitle: 'Gebouwd en te water',
       portfolioSubtitle: 'Portfolio',
-      portfolioLink: 'Bekijk alle projecten',
       portfolioMore: 'Meer projecten laten zien',
 
       ctaTitle: 'Begin Uw Project',
