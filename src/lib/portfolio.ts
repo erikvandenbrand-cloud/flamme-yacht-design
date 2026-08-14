@@ -38,12 +38,18 @@ export const portfolioItems: PortfolioItem[] = [
     titleNl: 'Eagle 25 TS',
     category: 'tender',
     status: 'realized',
-    lengthRange: '7.60m',
+    // 7,5 m volgens Eagle Boats zelf. De copyset hield 7,60 m aan.
+    lengthRange: '7.5m',
     year: '2025',
     role: 'complete',
     image: '/images/projects/eagle-25-deck.jpg',
     images: [
       '/images/projects/eagle-25-interieur.jpg',
+      '/images/projects/eagle-25ts-3.webp',
+      '/images/projects/eagle-25ts-4.webp',
+      '/images/projects/eagle-25ts-5.jpg',
+      '/images/projects/eagle-25ts-6.webp',
+      '/images/projects/eagle-25ts-7.jpg',
       '/images/projects/eagle-25.jpg',
     ],
     featured: true,
@@ -58,10 +64,16 @@ export const portfolioItems: PortfolioItem[] = [
     titleNl: 'Cooper 680',
     category: 'tender',
     status: 'realized',
-    lengthRange: '6.8m',
+    // 7,20 m volgens Cooperyacht zelf. Bij dit merk is het typenummer dus geen
+    // lengte, anders dan bij Baaiman.
+    lengthRange: '7.20m',
     year: '2019',
     role: 'complete',
     image: '/images/projects/cooper-680.jpg',
+    images: [
+      '/images/projects/cooper-680-2.jpg',
+      '/images/projects/cooper-680-3.jpg',
+    ],
     featured: true,
     published: true,
     yard: 'Cooperyacht',
@@ -240,7 +252,8 @@ export const portfolioItems: PortfolioItem[] = [
     titleNl: 'Cooper 800',
     category: 'tender',
     status: 'realized',
-    lengthRange: '8m',
+    // Geen lengte: de 680 blijkt 7,20 m, dus bij Cooper zegt het typenummer
+    // niets over de lengte. De eerder aangenomen 8 m is daarmee onbruikbaar.
     role: 'naval',
     image: '/images/projects/cooper-800.jpg',
     featured: false,
