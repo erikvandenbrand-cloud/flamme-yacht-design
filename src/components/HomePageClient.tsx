@@ -22,7 +22,6 @@ interface HomePageClientProps {
       heroTagline: string;
       heroCta: string;
       heroCtaSecondary: string;
-      proof: { label: string; lines: string[]; credit: string }[];
       introTitle: string;
       introText: string;
       introText2: string;
@@ -195,31 +194,6 @@ export function HomePageClient({
         </motion.div>
       </section>
 
-      {/* PROOF BAR — awards belong to the yards, so every credit line stays visible */}
-      <section className="border-b border-border/40 bg-white">
-        <div className="container-wide">
-          <div className="grid divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {t.home.proof.map((item) => (
-              <div key={item.label} className="py-8 sm:px-8 sm:py-10 sm:first:pl-0 sm:last:pr-0">
-                <p className="text-sm font-medium tracking-tight text-foreground">
-                  {item.label}
-                </p>
-                {item.lines.map((line) => (
-                  <p key={line} className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {line}
-                  </p>
-                ))}
-                {item.credit && (
-                  <p className="mt-3 text-xs uppercase tracking-[0.12em] text-muted-foreground/70">
-                    {item.credit}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* INTRO SECTION */}
       <section className="bg-white py-24 md:py-32">
         <div className="container-wide">
@@ -298,8 +272,8 @@ export function HomePageClient({
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <Image
-                  src="/images/projects/orizzonte-ii.jpg"
-                  alt=""
+                  src="/images/herbert-van-den-brand.jpg"
+                  alt={t.studio.founderTitle}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -319,14 +293,9 @@ export function HomePageClient({
               <p className="mb-8 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {t.studio.founderBio2}
               </p>
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-lg font-semibold text-primary">HB</span>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">{t.studio.founderTitle}</p>
-                  <p className="text-sm text-muted-foreground">{t.studio.founderRole}</p>
-                </div>
+              <div className="border-t border-border/50 pt-6">
+                <p className="font-medium text-foreground">{t.studio.founderTitle}</p>
+                <p className="text-sm text-muted-foreground">{t.studio.founderRole}</p>
               </div>
             </FadeIn>
           </div>

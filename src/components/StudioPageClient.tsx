@@ -93,13 +93,11 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
       <section className="py-24 md:py-32 lg:py-40 bg-background">
         <div className="container-wide">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Still a project photo, not Herbert — so it stays decorative until
-                we have an actual portrait. */}
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
                 <Image
-                  src="/images/projects/frisia-iv.jpg"
-                  alt=""
+                  src="/images/herbert-van-den-brand.jpg"
+                  alt={t.studio.founderTitle}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"

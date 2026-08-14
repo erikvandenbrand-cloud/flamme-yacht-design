@@ -28,30 +28,10 @@ export const translations = {
     // Home page
     home: {
       heroEyebrow: 'YACHT DESIGN · NAVAL ARCHITECTURE · ENGINEERING',
-      heroTitle: 'From first line to build-ready yacht',
-      heroTagline: 'One designer combining yacht design, naval architecture and engineering — from concept sketch through to the drawings the yard builds from.',
+      heroTitle: 'First the feeling. Then the lines.',
+      heroTagline: 'Yacht design, naval architecture and engineering in one pair of hands, so the yacht you picture is the yacht that gets launched.',
       heroCta: 'View our work',
       heroCtaSecondary: 'How we work',
-
-      // The credit line under each award is not optional: both prizes were
-      // awarded to the yard, not to Flamme.
-      proof: [
-        {
-          label: 'Eagle 25 TS',
-          lines: ['Hiswa Boat of the Year 2025', 'Electric Boat category'],
-          credit: 'designed for Eagle Boats',
-        },
-        {
-          label: 'Cooper 680',
-          lines: ['Hiswa People\'s Choice 2020'],
-          credit: 'designed for Cooperyacht',
-        },
-        {
-          label: 'Since 2006',
-          lines: ['Independent design studio'],
-          credit: '',
-        },
-      ],
 
       introTitle: 'From an idea to a yacht that can actually be built.',
       introText: 'A successful yacht is more than styling alone. Proportion, performance, structure, systems and production have to work together from the first line.',
@@ -234,7 +214,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: 'Yacht design, naval architecture and engineering. From first line to build-ready yacht.',
+      tagline: 'Yacht design, naval architecture and engineering.',
       copyright: '© 2026 Flamme Yacht Design. All rights reserved.',
       privacy: 'Privacy Policy',
     },
@@ -267,30 +247,10 @@ export const translations = {
     // Home page
     home: {
       heroEyebrow: 'JACHTONTWERP · SCHEEPSARCHITECTUUR · ENGINEERING',
-      heroTitle: 'Van eerste lijn tot bouwtekening',
-      heroTagline: 'Eén ontwerper voor jachtontwerp, scheepsarchitectuur en engineering — van eerste schets tot de tekeningen waarmee de werf bouwt.',
+      heroTitle: 'Eerst het gevoel. Dan de lijnen.',
+      heroTagline: 'Jachtontwerp, scheepsarchitectuur en engineering in één hand, zodat het schip dat u voor zich ziet ook het schip is dat te water gaat.',
       heroCta: 'Bekijk onze projecten',
       heroCtaSecondary: 'Hoe we werken',
-
-      // De attributieregel onder elke prijs is niet optioneel: beide prijzen zijn
-      // aan de werf toegekend, niet aan Flamme.
-      proof: [
-        {
-          label: 'Eagle 25 TS',
-          lines: ['Hiswa Boot van het Jaar 2025', 'categorie Elektroboot'],
-          credit: 'ontwerp voor Eagle Boats',
-        },
-        {
-          label: 'Cooper 680',
-          lines: ['Hiswa Publiekslieveling 2020'],
-          credit: 'ontwerp voor Cooperyacht',
-        },
-        {
-          label: 'Sinds 2006',
-          lines: ['Zelfstandig ontwerpbureau'],
-          credit: '',
-        },
-      ],
 
       introTitle: 'Van idee naar een jacht dat écht gebouwd kan worden.',
       introText: 'Een goed jacht begint niet bij styling alleen. Vorm, vaareigenschappen, constructie, techniek en productie moeten vanaf de eerste lijn met elkaar kloppen.',
@@ -474,7 +434,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: 'Jachtontwerp, scheepsarchitectuur en engineering. Van eerste lijn tot bouwtekening.',
+      tagline: 'Jachtontwerp, scheepsarchitectuur en engineering.',
       copyright: '© 2026 Flamme Yacht Design. Alle rechten voorbehouden.',
       privacy: 'Privacyverklaring',
     },
