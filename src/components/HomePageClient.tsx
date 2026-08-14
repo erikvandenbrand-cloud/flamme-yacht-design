@@ -37,6 +37,7 @@ interface HomePageClientProps {
       portfolioTitle: string;
       portfolioSubtitle: string;
       portfolioLink: string;
+      portfolioMore: string;
       ctaTitle: string;
       ctaText: string;
       ctaCta: string;
@@ -103,8 +104,14 @@ export function HomePageClient({
     setIsSubmitted(true);
   };
 
-  // Get projects for display
-  const displayProjects = allProjects.slice(0, 8);
+  // Acht projecten in beeld, de rest achter een knop. Zonder die grens duwt het
+  // portfolio de contactsectie ver naar beneden.
+  const initialCount = 8;
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const displayProjects = showAllProjects
+    ? allProjects
+    : allProjects.slice(0, initialCount);
+  const remainingCount = allProjects.length - initialCount;
 
   return (
     <>
@@ -395,6 +402,19 @@ export function HomePageClient({
               />
             ))}
           </div>
+
+          {!showAllProjects && remainingCount > 0 && (
+            <div className="mt-16 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllProjects(true)}
+                className="inline-flex items-center gap-3 rounded-lg border border-border px-8 py-4 text-xs font-medium uppercase tracking-[0.15em] text-foreground transition-colors hover:border-foreground/40 hover:bg-slate-50"
+              >
+                {t.home.portfolioMore}
+                <span className="text-muted-foreground">{remainingCount}</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

@@ -105,6 +105,7 @@ export const translations = {
       portfolioTitle: 'Built and afloat',
       portfolioSubtitle: 'Portfolio',
       portfolioLink: 'View all projects',
+      portfolioMore: 'Show more projects',
 
       ctaTitle: 'Begin Your Journey',
       ctaText: 'Whether you\'re a shipyard, builder, or private client, we\'d be pleased to discuss your next yacht project.',
@@ -350,6 +351,7 @@ export const translations = {
       portfolioTitle: 'Gebouwd en te water',
       portfolioSubtitle: 'Portfolio',
       portfolioLink: 'Bekijk alle projecten',
+      portfolioMore: 'Meer projecten laten zien',
 
       ctaTitle: 'Begin Uw Project',
       ctaText: 'Of u nu een werf, scheepsbouwer of particuliere opdrachtgever bent — wij denken graag met u mee over uw volgende jacht.',
