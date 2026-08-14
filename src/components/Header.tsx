@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
@@ -82,20 +83,24 @@ export function Header({ locale }: HeaderProps) {
         }`}
       >
         {/* Logo */}
+        {/* Alleen het beeldmerk. Het woordmerk uit het volledige logo is zwart en
+            zou boven de donkere hero wegvallen; de tekst ernaast wisselt wel mee
+            van kleur. De naam staat op de link zelf, zodat een schermlezer hem
+            eenmaal krijgt en niet dubbel. */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
           className="flex items-center gap-3"
+          aria-label="Flamme Yacht Design"
         >
-          <div className={`flex items-center justify-center rounded-lg px-2.5 py-1.5 transition-all duration-500 ${
-            isScrolled || !isHomePage
-              ? 'bg-gradient-to-b from-slate-500 via-slate-600 to-slate-700 shadow-md'
-              : 'bg-gradient-to-b from-white/50 via-white/30 to-white/10 backdrop-blur-sm shadow-sm'
-          }`}>
-            <span className="text-xl font-extrabold tracking-tight text-white drop-shadow-sm">
-              FYD
-            </span>
-          </div>
+          <Image
+            src="/images/flamme-logo-mark.png"
+            alt=""
+            width={649}
+            height={384}
+            priority
+            className="h-9 w-auto"
+          />
           <div className="hidden flex-col md:flex">
             <span className={`text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors duration-500 ${
               isScrolled || !isHomePage ? 'text-foreground' : 'text-white'
@@ -163,16 +168,16 @@ export function Header({ locale }: HeaderProps) {
               </button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-sm border-l-0 bg-white">
-              {/* Mobile Logo */}
-              <div className="mb-10 flex items-center gap-3">
-                <div className="flex items-center justify-center rounded-lg bg-gradient-to-b from-slate-500 via-slate-600 to-slate-700 shadow-md px-3 py-1.5">
-                  <span className="text-xl font-extrabold tracking-tight text-white drop-shadow-sm">
-                    FYD
-                  </span>
-                </div>
-                <span className="text-sm font-semibold uppercase tracking-[0.1em] text-foreground">
-                  Flamme Yacht Design
-                </span>
+              {/* Mobile Logo — hier is de achtergrond wit, dus het volledige
+                  logo met woordmerk kan gewoon. */}
+              <div className="mb-10">
+                <Image
+                  src="/images/flamme-logo.png"
+                  alt="Flamme Yacht Design"
+                  width={665}
+                  height={494}
+                  className="h-14 w-auto"
+                />
               </div>
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (

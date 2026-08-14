@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { type Locale, getTranslations } from '@/lib/translations';
 
@@ -15,15 +16,15 @@ export function Footer({ locale }: FooterProps) {
         <div className="grid gap-16 py-24 md:grid-cols-3 lg:py-32">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href={`/${locale}`} className="inline-flex items-center gap-3">
-              <div className="flex items-center justify-center rounded-md bg-gradient-to-b from-slate-400 via-slate-500 to-slate-600 shadow-sm px-2.5 py-1.5">
-                <span className="text-xl font-extrabold tracking-tight text-white drop-shadow-sm">
-                  FYD
-                </span>
-              </div>
-              <span className="text-sm font-medium uppercase tracking-[0.1em] text-foreground">
-                Flamme Yacht Design
-              </span>
+            {/* Witte achtergrond hier, dus het volledige logo met woordmerk. */}
+            <Link href={`/${locale}`} className="inline-block">
+              <Image
+                src="/images/flamme-logo.png"
+                alt="Flamme Yacht Design"
+                width={665}
+                height={494}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {t.footer.tagline}
