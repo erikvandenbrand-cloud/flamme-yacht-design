@@ -640,8 +640,43 @@ export const portfolioItems: PortfolioItem[] = [
   },
 ];
 
+// De volgorde waarin projecten op de site verschijnen. Wat hier niet in staat
+// volgt daarna, in de volgorde van portfolioItems hierboven.
+//
+// Deze lijst staat los van de array zodat die gegroepeerd kan blijven per
+// herkomst, met de bronvermelding erbij. Anders zou elke wijziging in de
+// volgorde betekenen dat er blokken data verschoven moeten worden.
+const displayOrder = [
+  'eagle-25-ts',
+  'venandi-900',
+  'mtb40-breedendam',
+  'watertaxi-rotterdam',
+  'eagle-28ts',
+  'eagle-32ts',
+  'eagle-force-550',
+  'amalfi-760',
+  'stormer-porter-110',
+  'eagle-28sg',
+  'eagle-c999',
+  'cooper-34',
+  'alumax-rj28',
+  'ay-835',
+  'ribbon-45-mk2',
+];
+
+// Sorteren is stabiel, dus alles buiten displayOrder houdt onderling de
+// volgorde van de array.
+function byDisplayOrder(a: PortfolioItem, b: PortfolioItem) {
+  const indexA = displayOrder.indexOf(a.id);
+  const indexB = displayOrder.indexOf(b.id);
+  if (indexA === -1 && indexB === -1) return 0;
+  if (indexA === -1) return 1;
+  if (indexB === -1) return -1;
+  return indexA - indexB;
+}
+
 export function getPublishedPortfolio() {
-  return portfolioItems.filter(item => item.published);
+  return portfolioItems.filter(item => item.published).sort(byDisplayOrder);
 }
 
 export function getFeaturedPortfolio() {
@@ -649,11 +684,15 @@ export function getFeaturedPortfolio() {
 }
 
 export function getRealizedProjects() {
-  return portfolioItems.filter(item => item.published && item.status === 'realized');
+  return portfolioItems
+    .filter(item => item.published && item.status === 'realized')
+    .sort(byDisplayOrder);
 }
 
 export function getConceptProjects() {
-  return portfolioItems.filter(item => item.published && item.status === 'concept');
+  return portfolioItems
+    .filter(item => item.published && item.status === 'concept')
+    .sort(byDisplayOrder);
 }
 
 export function getPortfolioByCategory(category: PortfolioItem['category']) {
