@@ -343,6 +343,123 @@ export const portfolioItems: PortfolioItem[] = [
   },
 
   // ------------------------------------------------------------------
+  // Van volledig ontwerp tot bouwpakket, bij werven die niet op
+  // flamme-yachtdesign.com staan. Maten en materiaal komen van de werf zelf.
+  // Jaartallen vermeldt geen van die sites, dus die staan er niet bij.
+  // ------------------------------------------------------------------
+  {
+    id: 'eagle-28ts',
+    title: 'Eagle 28TS',
+    titleNl: 'Eagle 28TS',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '8.5m',
+    role: 'complete',
+    image: '/images/projects/eagle-28ts-2.jpg',
+    images: [
+      '/images/projects/eagle-28ts-1.webp',
+      '/images/projects/eagle-28ts-3.jpg',
+      '/images/projects/eagle-28ts-4.jpg',
+      '/images/projects/eagle-28ts-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Eagle Boats',
+    material: 'aluminium',
+  },
+  {
+    id: 'eagle-32ts',
+    title: 'Eagle 32TS',
+    titleNl: 'Eagle 32TS',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '9.75m',
+    role: 'complete',
+    image: '/images/projects/eagle-32ts-1.jpg',
+    images: [
+      '/images/projects/eagle-32ts-2.jpg',
+      '/images/projects/eagle-32ts-3.jpg',
+      '/images/projects/eagle-32ts-4.jpg',
+      '/images/projects/eagle-32ts-5.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Eagle Boats',
+    material: 'aluminium',
+  },
+  {
+    id: 'eagle-force-550',
+    title: 'Eagle Force 550',
+    titleNl: 'Eagle Force 550',
+    category: 'work',
+    status: 'realized',
+    role: 'complete',
+    image: '/images/projects/force-550-1.jpg',
+    images: [
+      '/images/projects/force-550-2.jpg',
+      '/images/projects/force-550-3.jpg',
+      '/images/projects/force-550-4.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Eagle Boats',
+    material: 'aluminium',
+  },
+  {
+    id: 'amalfi-760',
+    title: 'Amalfi 760 Hybrid',
+    titleNl: 'Amalfi 760 Hybrid',
+    category: 'tender',
+    status: 'realized',
+    lengthRange: '7.6m',
+    role: 'complete',
+    image: '/images/projects/amalfi-760-1.jpg',
+    images: ['/images/projects/amalfi-760-2.jpg'],
+    featured: false,
+    published: true,
+    yard: 'Sognare Yachts',
+    material: 'aluminium',
+    propulsion: 'hybrid',
+  },
+  {
+    id: 'stormer-porter-110',
+    title: 'Stormer Porter 110',
+    titleNl: 'Stormer Porter 110',
+    category: 'work',
+    status: 'realized',
+    lengthRange: '11.1m',
+    role: 'complete',
+    image: '/images/projects/porter-110-1.jpg',
+    images: [
+      '/images/projects/porter-110-2.jpg',
+      '/images/projects/porter-110-3.jpg',
+      '/images/projects/porter-110-4.jpg',
+    ],
+    featured: false,
+    published: true,
+    yard: 'Stormer Workboats',
+    material: 'aluminium',
+  },
+
+  // ------------------------------------------------------------------
+  // NOG TOE TE VOEGEN - gegevens bekend, foto ontbreekt
+  //
+  // Deze twee staan hier als aantekening en niet als item, omdat een kaart
+  // zonder foto stuk oogt.
+  //
+  // Amsterdam Yachts AY-835: 8,35 x 2,50 m, polyester, elektrische of
+  //   conventionele buitenboordmotor. Opvolger van de AY-550. Het SSL-
+  //   certificaat van ay-yachts.com is ongeldig, dus daar was niets op te halen.
+  //
+  // Alumax RJ28: 8 x 3 m, aluminium, diesel/elektrisch/hybride, werf Alumax
+  //   Boats in Meppel. Hun site laadt de foto's via JavaScript, dus er zijn
+  //   geen directe bestandsadressen.
+  //
+  // Nog helemaal niet gevonden: Eagle C999, Cooper 34, Lynx MV10,
+  // Alumax RJ34, Alumax DVV850, Davy & Orsted 750, Ribbon 45mk2.
+  // ------------------------------------------------------------------
+
+  // ------------------------------------------------------------------
   // NIET GEPUBLICEERD - herkomst onbevestigd
   //
   // Deze vier komen niet voor op flamme-yachtdesign.com, terwijl elk ander
