@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
@@ -77,11 +78,12 @@ export function ProjectCard({ project, locale, index }: ProjectCardProps) {
           className="group block w-full text-left"
         >
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
-            <img
+            <Image
               src={project.image}
               alt={title}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             {hasCarousel && (
               <span className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2 py-0.5 text-[0.65rem] font-medium text-white">
@@ -116,10 +118,13 @@ export function ProjectCard({ project, locale, index }: ProjectCardProps) {
             wegvallen, vandaar wit en boven de afbeelding getild. */}
         <DialogContent className="max-w-4xl gap-0 overflow-hidden p-0 [&>button]:z-20 [&>button]:text-white">
           <div className="relative aspect-[16/10] bg-slate-950">
-            <img
+            <Image
               src={gallery[current]}
               alt={title}
-              className="h-full w-full object-contain"
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-contain"
+              priority
             />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/50 to-transparent" />
 

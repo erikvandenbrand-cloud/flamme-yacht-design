@@ -73,12 +73,6 @@ export const translations = {
         },
       ],
 
-      band: [
-        ['Design', 'Naval Architecture', 'Engineering'],
-        ['Motor Yachts', 'Sailing Yachts', 'Tenders', 'Workboats'],
-        ['Concept', 'Development', 'Production'],
-      ],
-
       // Two audiences, two different promises. Owners are bought with feeling,
       // yards with predictability — so the tone differs per column on purpose.
       audiences: {
@@ -316,12 +310,6 @@ export const translations = {
           title: 'GEBOUWD OP DE PRAKTIJK',
           text: 'Tekeningen waarmee een werf daadwerkelijk verder kan.',
         },
-      ],
-
-      band: [
-        ['Ontwerp', 'Scheepsarchitectuur', 'Engineering'],
-        ['Motorjachten', 'Zeiljachten', 'Tenders', 'Werkschepen'],
-        ['Concept', 'Ontwikkeling', 'Productie'],
       ],
 
       // Twee publieken, twee beloften. De opdrachtgever wordt geraakt door

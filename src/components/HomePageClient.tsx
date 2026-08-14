@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
@@ -27,7 +28,6 @@ interface HomePageClientProps {
       introText2: string;
       introLink: string;
       statements: { title: string; text: string }[];
-      band: string[][];
       audiences: {
         eyebrow: string;
         items: { label: string; title: string; text: string; text2: string }[];
@@ -296,10 +296,12 @@ export function HomePageClient({
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
-                <img
+                <Image
                   src="/images/projects/orizzonte-ii.jpg"
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
             </FadeIn>
@@ -415,22 +417,6 @@ export function HomePageClient({
               </button>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* TYPOGRAPHIC BAND — text and rules only, no icons */}
-      <section className="border-y border-border/40 bg-white py-14 md:py-20">
-        <div className="container-wide">
-          <div className="divide-y divide-border/40">
-            {t.home.band.map((row) => (
-              <p
-                key={row.join()}
-                className="py-4 text-sm tracking-wide text-muted-foreground md:text-base"
-              >
-                {row.join('  /  ')}
-              </p>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, use } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { type Locale, getTranslations } from '@/lib/translations';
 import { Input } from '@/components/ui/input';
@@ -41,10 +42,13 @@ export default function ContactPage({ params }: PageProps) {
       <section className="relative flex min-h-[60vh] items-center overflow-hidden pt-24">
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-          <img
+          <Image
             src="/images/projects/flamboyant.jpg"
-            alt="Contact"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
         </motion.div>

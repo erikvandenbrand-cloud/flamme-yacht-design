@@ -281,6 +281,7 @@ export default function PortfolioAdminPage() {
                         src={formData.image}
                         alt="Preview"
                         fill
+                        sizes="(max-width: 768px) 100vw, 672px"
                         className="object-cover"
                       />
                     </div>
@@ -393,6 +394,7 @@ export default function PortfolioAdminPage() {
                       src={item.image}
                       alt={item.title}
                       fill
+                      sizes="120px"
                       className="object-cover"
                     />
                   </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { use, useState } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { type Locale, getTranslations } from '@/lib/translations';
 import {
@@ -50,10 +51,13 @@ export default function PortfolioPage({ params }: PageProps) {
       <section className="relative flex min-h-[60vh] items-center overflow-hidden pt-24">
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-          <img
+          <Image
             src="/images/projects/eagle-25-deck.jpg"
-            alt="Portfolio"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/70 to-slate-900/95" />
         </motion.div>

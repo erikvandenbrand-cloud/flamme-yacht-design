@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
@@ -40,10 +41,13 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
       <section className="relative flex min-h-[70vh] items-center overflow-hidden pt-24">
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-          <img
+          <Image
             src="/images/projects/orizzonte-ii.jpg"
-            alt="Studio"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
         </motion.div>
@@ -93,10 +97,12 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
                 we have an actual portrait. */}
             <FadeIn direction="left">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10 lg:aspect-auto lg:min-h-[500px]">
-                <img
+                <Image
                   src="/images/projects/frisia-iv.jpg"
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
             </FadeIn>
@@ -126,10 +132,12 @@ export function StudioPageClient({ locale, t }: StudioPageClientProps) {
                   key={src}
                   className="relative aspect-square overflow-hidden rounded-2xl bg-muted shadow-lg"
                 >
-                  <img
+                  <Image
                     src={src}
                     alt=""
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               ))}

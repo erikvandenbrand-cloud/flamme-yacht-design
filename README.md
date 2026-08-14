@@ -38,15 +38,39 @@ doe je daar. De admin-pagina toont ze alleen; die schrijft niets terug.
 
 ## Afbeeldingen
 
-Staan in `public/images/projects/` en zijn afkomstig van flamme-yachtdesign.com en
-eagleboats.nl. De site hangt dus niet meer aan de CDN van same.new.
+Staan in `public/images/projects/`, opgehaald bij flamme-yachtdesign.com en bij de
+werven zelf. De site hangt niet meer aan de CDN van same.new.
+
+Alles gaat via `next/image` met `fill`, dus de container bepaalt de maat en Next
+schaalt en converteert naar AVIF of WebP. Geef bij een nieuwe afbeelding altijd
+een `sizes` mee die klopt met de layout, anders haalt de browser een groter
+bestand dan nodig.
 
 Alleen de vier niet-gepubliceerde projecten in `portfolio.ts` wijzen nog naar
-`ext.same-assets.com`. Zodra die zijn opgehelderd kunnen de `remotePatterns` in
-`next.config.js` mee opgeruimd worden.
+`ext.same-assets.com`. Zodra die zijn opgehelderd kan `remotePatterns` in
+`next.config.js` weg.
 
-Een nieuw project toevoegen: bestand in `public/images/projects/` zetten en in
-`portfolio.ts` verwijzen als `/images/projects/naam.jpg`.
+Een nieuw project toevoegen: bestand in `public/images/projects/` zetten, in
+`portfolio.ts` verwijzen als `/images/projects/naam.jpg`, en het id opnemen in
+`displayOrder` als het vooraan moet staan.
+
+Houd bestanden op maximaal 1600 pixels breed. Groter levert niets op en de map
+loopt er snel vol mee.
+
+## Projectgegevens
+
+`portfolio.ts` is de bron. Een paar dingen die niet vanzelf spreken:
+
+- **Lege velden vallen weg.** Lengte, jaar, rol, materiaal en voortstuwing zijn
+  optioneel. Een ontbrekend gegeven hoort weg te blijven, niet geraden te worden.
+- **`designer`** vermeldt de externe ontwerper bij projecten waar Flamme alleen
+  de techniek deed. Zonder dat veld claimt de site andermans ontwerp.
+- **Het typenummer is niet altijd de lengte.** Bij Baaiman en Eagle wel, bij
+  Cooper en Davy & Ørsted niet. Vul lengte alleen in als de werf hem noemt.
+- **`status`** kent `realized`, `building` en `concept`. Elk krijgt een eigen
+  sectie op de portfoliopagina, die verdwijnt als er niets in staat.
+- **`displayOrder`** bepaalt de volgorde op de site, los van de array. Wat er
+  niet in staat volgt daarna.
 
 ## Scripts
 

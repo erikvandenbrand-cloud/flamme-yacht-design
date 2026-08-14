@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '@/components/animations';
@@ -47,10 +48,13 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
       <section className="relative flex min-h-[70vh] items-center overflow-hidden pt-24">
         {/* Background Image with parallax */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-          <img
+          <Image
             src="/images/projects/discipline-design.jpg"
-            alt="Services"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
         </motion.div>
@@ -134,10 +138,12 @@ export function ServicesPageClient({ locale, t }: ServicesPageClientProps) {
 
                 <FadeIn direction="right" delay={0.15} className={reversed ? 'lg:order-1' : ''}>
                   <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl shadow-black/10">
-                    <img
+                    <Image
                       src={disciplineImages[index]}
                       alt={discipline.title}
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
                     />
                   </div>
                 </FadeIn>
