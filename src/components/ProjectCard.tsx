@@ -77,12 +77,15 @@ export function ProjectCard({ project, locale, index }: ProjectCardProps) {
           onClick={() => setOpen(true)}
           className="group block w-full text-left"
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
+          {/* 3:2 in plaats van 4:3. De bronfoto's zijn overwegend breed, tot 2:1
+              toe, en een boot is nu eenmaal een lang en laag ding: in een smaller
+              kader snijdt de crop juist de boeg en de spiegel weg. */}
+          <div className="relative aspect-[3/2] overflow-hidden rounded-xl bg-muted">
             <Image
               src={project.image}
               alt={title}
               fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             {hasCarousel && (
@@ -96,7 +99,7 @@ export function ProjectCard({ project, locale, index }: ProjectCardProps) {
               {statusShortLabels[locale][project.status]}
               {project.year ? ` · ${project.year}` : ''}
             </p>
-            <h3 className="mt-1.5 text-base font-medium tracking-tight text-foreground group-hover:text-primary">
+            <h3 className="mt-1.5 text-lg font-medium tracking-tight text-foreground group-hover:text-primary">
               {title}
             </h3>
             {meta && (

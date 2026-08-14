@@ -104,9 +104,10 @@ export function HomePageClient({
     setIsSubmitted(true);
   };
 
-  // Acht projecten in beeld, de rest achter een knop. Zonder die grens duwt het
-  // portfolio de contactsectie ver naar beneden.
-  const initialCount = 8;
+  // Negen in beeld, de rest achter een knop. Zonder die grens duwt het portfolio
+  // de contactsectie ver naar beneden. Negen en niet acht, omdat het raster nu
+  // drie kolommen breed is en acht dus een halve rij overlaat.
+  const initialCount = 9;
   const [showAllProjects, setShowAllProjects] = useState(false);
   const displayProjects = showAllProjects
     ? allProjects
@@ -393,8 +394,10 @@ export function HomePageClient({
             </h2>
           </FadeIn>
 
-          {/* Project details stay visible — they are the point, not a hover reward */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
+          {/* Project details stay visible — they are the point, not a hover reward.
+              Op een telefoon één kolom: bij twee wordt een boot van tien meter
+              een streepje van anderhalve centimeter. */}
+          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {displayProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}

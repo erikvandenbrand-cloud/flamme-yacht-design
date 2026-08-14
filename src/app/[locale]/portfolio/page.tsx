@@ -138,7 +138,7 @@ export default function PortfolioPage({ params }: PageProps) {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {realizedProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -167,7 +167,7 @@ export default function PortfolioPage({ params }: PageProps) {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {buildingProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -196,7 +196,7 @@ export default function PortfolioPage({ params }: PageProps) {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {conceptProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
