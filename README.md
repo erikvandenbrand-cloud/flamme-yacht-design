@@ -16,9 +16,14 @@ Houd commits daarom klein, zodat een mislukte build makkelijk te herleiden is.
 
 ## Contactformulier
 
-Het formulier post naar `/api/contact`, en die route stuurt het door via
-Web3Forms. De sleutel staat als `WEB3FORMS_ACCESS_KEY` in de omgeving van Vercel
-en dus niet in de paginabron. Zie `.env.example`.
+Het formulier post naar `/api/contact`, en die route verstuurt via de eigen
+mailserver met nodemailer. Geen tussenpartij. De inloggegevens staan in de
+omgeving van Vercel, zie `.env.example`.
+
+Het adres van de bezoeker staat in Reply-To en niet in From. Dat is geen detail:
+zou de mailserver post versturen namens een domein waarvoor hij niet mag
+tekenen, dan keuren SPF en DMARC het af of het bericht belandt in de spammap.
+Afzender blijft dus het eigen adres, antwoorden gaat naar de bezoeker.
 
 Ontbreekt de sleutel, dan geeft de route bewust een fout en toont het formulier
 het e-mailadres. Dat is met opzet: eerder stond hier een simulatie die altijd

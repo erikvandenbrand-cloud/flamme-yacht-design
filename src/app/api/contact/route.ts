@@ -1,18 +1,23 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
-// Web3Forms stuurt het bericht door naar het adres dat aan de sleutel hangt.
-// De sleutel blijft hier op de server, zodat hij niet in de paginabron staat.
-const ENDPOINT = 'https://api.web3forms.com/submit';
+// Nodemailer opent een echte TCP-verbinding en draait dus niet op de
+// Edge-runtime.
+export const runtime = 'nodejs';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT ?? 465);
+  const user = process.env.SMTP_USER;
+  const password = process.env.SMTP_PASSWORD;
+  const to = process.env.CONTACT_TO ?? user;
 
-  // Zonder sleutel gaat er niets weg. Dan liever een duidelijke fout, zodat de
-  // bezoeker het e-mailadres te zien krijgt, dan een bevestiging voor een
-  // bericht dat nergens aankomt.
-  if (!accessKey) {
+  // Zonder deze gegevens gaat er niets weg. Dan liever een duidelijke fout,
+  // zodat de bezoeker het e-mailadres te zien krijgt, dan een bevestiging voor
+  // een bericht dat nergens aankomt.
+  if (!host || !user || !password || !to) {
     return NextResponse.json({ error: 'not_configured' }, { status: 503 });
   }
 
@@ -44,32 +49,41 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'invalid_email' }, { status: 400 });
   }
 
-  try {
-    const response = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        access_key: accessKey,
-        // replyto zorgt dat Beantwoorden naar de afzender gaat en niet naar
-        // Web3Forms zelf.
-        replyto: email,
-        from_name: name,
-        subject: subject
-          ? `Flamme Yacht Design - ${subject}`
-          : 'Flamme Yacht Design - bericht via de site',
-        Naam: name,
-        Email: email,
-        Onderwerp: subject || '-',
-        Bericht: message,
-      }),
-    });
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    // 465 is TLS vanaf de eerste byte, 587 begint onversleuteld en schakelt om
+    // met STARTTLS.
+    secure: port === 465,
+    auth: { user, pass: password },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
+  });
 
-    if (!response.ok) {
-      return NextResponse.json({ error: 'upstream' }, { status: 502 });
-    }
+  try {
+    await transporter.sendMail({
+      // De afzender moet het eigen adres blijven. Het adres van de bezoeker in
+      // From zetten oogt handig, maar dan verstuurt de mailserver post namens
+      // een domein waar hij niet voor mag tekenen: SPF en DMARC laten dat
+      // afkeuren of het bericht belandt in de spammap. Vandaar Reply-To.
+      from: `"Flamme Yacht Design" <${user}>`,
+      to,
+      replyTo: `"${name}" <${email}>`,
+      subject: subject
+        ? `Website: ${subject}`
+        : 'Website: bericht via het contactformulier',
+      text: [
+        `Naam:      ${name}`,
+        `E-mail:    ${email}`,
+        `Onderwerp: ${subject || '-'}`,
+        '',
+        message,
+      ].join('\n'),
+    });
 
     return NextResponse.json({ ok: true });
   } catch {
-    return NextResponse.json({ error: 'upstream' }, { status: 502 });
+    return NextResponse.json({ error: 'send_failed' }, { status: 502 });
   }
 }
