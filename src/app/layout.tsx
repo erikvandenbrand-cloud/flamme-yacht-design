@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { CookieConsent } from "@/components/CookieConsent";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,6 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  // Zonder deze regel maakt Next relatieve canonical- en hreflang-URLs.
+  // Google negeert hreflang dan, want dat moet absoluut zijn.
+  metadataBase: new URL(SITE_URL),
   title: "Flamme Yacht Design | Yacht Design, Naval Architecture & Engineering",
   description: "Independent Dutch yacht design studio combining yacht design, naval architecture and engineering, from first concept to construction-ready design.",
   keywords: [
@@ -26,6 +30,7 @@ export const metadata: Metadata = {
   creator: "Flamme Yacht Design",
   openGraph: {
     type: "website",
+    url: SITE_URL,
     locale: "en_US",
     alternateLocale: "nl_NL",
     siteName: "Flamme Yacht Design",

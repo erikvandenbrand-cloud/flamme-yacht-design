@@ -1,4 +1,6 @@
+import { notFound } from 'next/navigation';
 import { type Locale } from '@/lib/translations';
+import { isLocale } from '@/lib/site';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
@@ -16,7 +18,15 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale: localeParam } = await params;
-  const locale = (localeParam === 'nl' ? 'nl' : 'en') as Locale;
+
+  // Alles wat geen taal is viel hier eerder stilletjes terug op 'en' en ging
+  // daarna verderop stuk op een ontbrekend label: /design en /robots.txt
+  // gaven zo een 500 in plaats van een 404.
+  if (!isLocale(localeParam)) {
+    notFound();
+  }
+
+  const locale = localeParam as Locale;
 
   return (
     <>
